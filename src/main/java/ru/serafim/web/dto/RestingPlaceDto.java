@@ -1,7 +1,6 @@
 package ru.serafim.web.dto;
 
 import lombok.*;
-import ru.serafim.web.models.RestingPlace;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,16 +17,16 @@ public class RestingPlaceDto {
     private ContactDto contactDto;
     private AccountDto accountDto;
 
-    public static RestingPlaceDto from(RestingPlace restingPlace) {
-        return RestingPlaceDto.builder()
-                .name(restingPlace.getName())
-                .accountDto(AccountDto.from(restingPlace.getAccount()))
-                .serviceRate(restingPlace.getServiceRate())
-                .contactDto(ContactDto.from(restingPlace.getContact_id()))
+    public static RestingPlaceDto from(ru.serafim.web.models.RestingPlaceDto restingPlaceDto) {
+        return ru.serafim.web.dto.RestingPlaceDto.builder()
+                .name(restingPlaceDto.getName())
+                .accountDto(AccountDto.from(restingPlaceDto.getAccount()))
+                .serviceRate(restingPlaceDto.getServiceRate())
+                .contactDto(ContactDto.from(restingPlaceDto.getContact_id()))
                 .build();
     }
 
-    public static List<RestingPlaceDto> from(List<RestingPlace> restingPlaceList) {
-        return restingPlaceList.stream().map(RestingPlaceDto::from).collect(Collectors.toList());
+    public static List<RestingPlaceDto> from(List<ru.serafim.web.models.RestingPlaceDto> restingPlaceDtoList) {
+        return restingPlaceDtoList.stream().map(ru.serafim.web.dto.RestingPlaceDto::from).collect(Collectors.toList());
     }
 }

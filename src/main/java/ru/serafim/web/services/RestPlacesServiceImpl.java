@@ -17,7 +17,14 @@ public class RestPlacesServiceImpl implements RestPlacesService {
     private final RestPlacesRepository restPlacesRepository;
 
     @Override
-    public List<RestingPlaceDto> getAllRestPlases() {
+    public List<ru.serafim.web.dto.RestingPlaceDto> getAllRestPlases() {
         return from(restPlacesRepository.findAll());
     }
+
+    @Override
+    public RestingPlaceDto getRestPlaceByName(String name) {
+        return from(restPlacesRepository.findByName(name));
+    }
+
+
 }

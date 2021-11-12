@@ -4,8 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.serafim.web.dto.RestingPlaceDto;
 import ru.serafim.web.services.RestPlacesService;
 
 @Controller
@@ -21,10 +23,11 @@ public class RestPlacesController {
         return "/restPlaces";
     }
 
-    // In this place must be the post method))))
-    @PostMapping
-    public String getResult() {
-
+    @PostMapping("/{restPlace-name}/select")
+    public String getResult(@PathVariable("restPlace-name") String email, Model model) {
+        RestingPlaceDto restPlaceDto = restPlacesService.getRestPlaceByName(email);
+        model.addAttribute("restPlace", restPlaceDto);
+        return "redirect:/restPlace";
     }
 
 }
