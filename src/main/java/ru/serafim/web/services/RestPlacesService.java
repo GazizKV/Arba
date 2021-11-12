@@ -1,12 +1,12 @@
 package ru.serafim.web.services;
 
-import ru.serafim.web.dto.RestingPlaceDto;
+import ru.serafim.web.dto.ChillPlaceDto;
 
 import java.util.List;
 
 public interface RestPlacesService {
 
-    List<ru.serafim.web.dto.RestingPlaceDto> getAllRestPlases();
+    List<ChillPlaceDto> getAllRestPlases();
 
-    RestingPlaceDto getRestPlaceByName(String email);
+    ChillPlaceDto getRestPlaceByName(String email);
 }

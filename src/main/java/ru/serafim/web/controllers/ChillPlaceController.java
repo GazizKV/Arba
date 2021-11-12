@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.serafim.web.dto.RestingPlaceDto;
+import ru.serafim.web.dto.ChillPlaceDto;
 import ru.serafim.web.services.RestPlacesService;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/restPlaces")
-public class RestPlacesController {
+public class ChillPlaceController {
 
     private final RestPlacesService restPlacesService;
 
@@ -25,7 +25,7 @@ public class RestPlacesController {
 
     @PostMapping("/{restPlace-name}/select")
     public String getResult(@PathVariable("restPlace-name") String email, Model model) {
-        RestingPlaceDto restPlaceDto = restPlacesService.getRestPlaceByName(email);
+        ChillPlaceDto restPlaceDto = restPlacesService.getRestPlaceByName(email);
         model.addAttribute("restPlace", restPlaceDto);
         return "redirect:/restPlace";
     }
