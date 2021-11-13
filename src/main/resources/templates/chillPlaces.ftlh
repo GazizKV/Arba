@@ -8,14 +8,6 @@
     <title>RestPlace</title>
 </head>
 <body>
-<form action="/chillPlaces/fileUpload" method="post" enctype="multipart/form-data">
-    <label for="description">Description</label>
-    <input type="text" id="description" name="description" placeholder="Enter description...">
-    <br>
-    <input type="file" name="file">
-    <input type="submit" value="File Upload">
-</form>
-<hr/>
 <table id="accounts_table">
     <tr>
         <th>Action</th>
