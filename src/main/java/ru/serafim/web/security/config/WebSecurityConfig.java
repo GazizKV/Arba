@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
@@ -44,6 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").authenticated()
                 .antMatchers("/profile").authenticated()
                 .antMatchers("/accounts/**").hasAuthority("ADMIN")
+                .antMatchers("/chillPlaces/**").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/signIn")
@@ -51,7 +53,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/signIn?error")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .permitAll();
+                .permitAll()
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/signIn?logout")
+                .deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true);
     }
 
     @Bean

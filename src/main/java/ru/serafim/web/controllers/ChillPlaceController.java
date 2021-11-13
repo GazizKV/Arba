@@ -30,4 +30,11 @@ public class ChillPlaceController {
         return "redirect:/chillPlace";
     }
 
+    @PostMapping("/fileUpload")
+    public String fileUpload(Model model) {
+        int i = 0;
+        model.addAttribute("asdf", "dasf");
+        return "/chillPlaces";
+    }
+
 }
