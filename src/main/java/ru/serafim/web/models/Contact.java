@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
-import ru.serafim.web.models.Address;
 
 @Getter
 @Setter
@@ -22,8 +21,8 @@ public class Contact {
     private String email;
 
     @OneToOne
-    @JoinColumn(name = "resting_plase_id")
-    private RestingPlace restingPlace;
+    @JoinColumn(name = "chill_place_id")
+    private ChillPlace ChillPlace;
 
 
     @OneToMany(mappedBy = "contact")

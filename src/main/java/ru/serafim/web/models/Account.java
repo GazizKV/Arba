@@ -2,12 +2,10 @@ package ru.serafim.web.models;
 
 import lombok.*;
 import org.hibernate.Hibernate;
-import org.springframework.web.bind.annotation.Mapping;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -44,7 +42,7 @@ public class Account {
 
     @OneToMany(mappedBy = "account")
     @ToString.Exclude
-    private List<RestingPlace> restingPlaceList;
+    private List<ChillPlace> chillPlace;
 
     private String email;
     private String password;

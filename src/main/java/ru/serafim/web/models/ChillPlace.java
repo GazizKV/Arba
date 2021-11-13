@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class RestingPlace {
+public class ChillPlace {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +27,8 @@ public class RestingPlace {
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
+
+    @Column(length = 1000)
+    private String description;
 
 }

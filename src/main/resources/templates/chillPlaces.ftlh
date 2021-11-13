@@ -15,17 +15,17 @@
         <th>Service rate</th>
         <th>Contacts</th>
     </tr>
-    <#list restPlasesList as restPlase>
+    <#list chillPlaces as chillPlace>
         <tr>
             <td>
-                <form method="post" action="/accounts/${restPlase.id}/select">
+                <form method="post" action="/chillPlaces/${chillPlace.name}/select">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     <input type="submit" value="Select">
                 </form>
             </td>
-            <td>${restPlase.name}</td>
-            <td>${restPlase.service_rate}</td>
-            <td>${restPlase.contact.phone_number}</td>
+            <td>${chillPlace.name}</td>
+            <td>${chillPlace.serviceRate}</td>
+            <td>${chillPlace.contactDto.email}</td>
             <td></td>
         </tr>
     </#list>
