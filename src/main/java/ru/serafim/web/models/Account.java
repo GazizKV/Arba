@@ -42,7 +42,7 @@ public class Account {
 
     @OneToMany(mappedBy = "account")
     @ToString.Exclude
-    private List<RestingPlaceDto> restingPlaceDtoList;
+    private List<ChillPlace> chillPlace;
 
     private String email;
     private String password;

@@ -21,8 +21,8 @@ public class Contact {
     private String email;
 
     @OneToOne
-    @JoinColumn(name = "resting_plase_id")
-    private RestingPlaceDto restingPlaceDto;
+    @JoinColumn(name = "chill_place_id")
+    private ChillPlace ChillPlace;
 
 
     @OneToMany(mappedBy = "contact")

@@ -4,9 +4,11 @@ import ru.serafim.web.dto.ChillPlaceDto;
 
 import java.util.List;
 
-public interface RestPlacesService {
+public interface ChillPlacesService {
 
     List<ChillPlaceDto> getAllRestPlases();
 
-    ChillPlaceDto getRestPlaceByName(String email);
+    ChillPlaceDto getChillPlaceByEmail(String email);
+
+    ChillPlaceDto getChillPlaceById(Long id);
 }

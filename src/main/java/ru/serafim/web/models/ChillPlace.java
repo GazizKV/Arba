@@ -28,4 +28,7 @@ public class ChillPlace {
     @JoinColumn(name = "account_id")
     private Account account;
 
+    @Column(length = 1000)
+    private String description;
+
 }

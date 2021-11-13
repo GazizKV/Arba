@@ -8,26 +8,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.serafim.web.dto.ChillPlaceDto;
-import ru.serafim.web.services.RestPlacesService;
+import ru.serafim.web.services.ChillPlacesService;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/restPlaces")
+@RequestMapping("/chillPlaces")
 public class ChillPlaceController {
 
-    private final RestPlacesService restPlacesService;
+    private final ChillPlacesService chillPlacesService;
 
     @GetMapping
     public String getRests(Model model) {
-        model.addAttribute("restPlases", restPlacesService.getAllRestPlases());
-        return "/restPlaces";
+        model.addAttribute("chillPlaces", chillPlacesService.getAllRestPlases());
+        return "chillPlaces";
     }
 
-    @PostMapping("/{restPlace-name}/select")
-    public String getResult(@PathVariable("restPlace-name") String email, Model model) {
-        ChillPlaceDto restPlaceDto = restPlacesService.getRestPlaceByName(email);
-        model.addAttribute("restPlace", restPlaceDto);
-        return "redirect:/restPlace";
+    @PostMapping("/{chillPlace-id}/select")
+    public String getResult(@PathVariable("chillPlace-id") Long id, Model model) {
+        ChillPlaceDto chillPlaceDto = chillPlacesService.getChillPlaceById(id);
+        model.addAttribute("restPlace", chillPlaceDto);
+        return "redirect:/chillPlace";
     }
 
 }

@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class Address {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String region;
