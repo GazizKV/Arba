@@ -3,9 +3,11 @@ package ru.serafim.web.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.serafim.web.dto.ChillPlaceDto;
+import ru.serafim.web.models.ChillPlace;
 import ru.serafim.web.repositories.ChillPlaceRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static ru.serafim.web.dto.ChillPlaceDto.from;
 
@@ -28,7 +30,17 @@ public class ChillPlacesServiceImpl implements ChillPlacesService {
 
     @Override
     public ChillPlaceDto getChillPlaceById(Long id) {
-        return from(chillPlaceRepository.findById(id).get());
+        Optional<ChillPlace> chillPlace = chillPlaceRepository.findById(id);
+        if(chillPlace.isPresent()) {
+            return from(chillPlace.get());
+        } else {
+            throw new NullPointerException("Can not find ChillPlace by this id.");
+        }
+    }
+
+    @Override
+    public ChillPlaceDto getChillPlaceByName(String name) {
+        return from(chillPlaceRepository.findAllByName(name));
     }
 
 

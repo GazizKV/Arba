@@ -23,9 +23,9 @@ public class ChillPlaceController {
         return "chillPlaces";
     }
 
-    @PostMapping("/{chillPlace-id}/select")
-    public String getResult(@PathVariable("chillPlace-id") Long id, Model model) {
-        ChillPlaceDto chillPlaceDto = chillPlacesService.getChillPlaceById(id);
+    @PostMapping("/{chillPlace-name}/select")
+    public String getResult(@PathVariable("chillPlace-name") String name, Model model) {
+        ChillPlaceDto chillPlaceDto = chillPlacesService.getChillPlaceByName(name);
         model.addAttribute("restPlace", chillPlaceDto);
         return "redirect:/chillPlace";
     }

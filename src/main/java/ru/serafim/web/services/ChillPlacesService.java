@@ -11,4 +11,6 @@ public interface ChillPlacesService {
     ChillPlaceDto getChillPlaceByEmail(String email);
 
     ChillPlaceDto getChillPlaceById(Long id);
+
+    ChillPlaceDto getChillPlaceByName(String name);
 }
