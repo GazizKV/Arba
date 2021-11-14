@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/accounts/**").hasAuthority("ADMIN")
                 .antMatchers("/chillPlaces/**").authenticated()
                 .antMatchers("/fileUpload").authenticated()
-                .antMatchers("/loadedFile").authenticated()
+                .antMatchers("/loadedFile").permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/signIn")
@@ -72,12 +72,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return jdbcTokenRepository;
     }
 
-    @Bean(name = "multipartResolver")
-    public CommonsMultipartResolver multipartResolver() {
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(100000000);
-        multipartResolver.setSupportedMethods("fileUpload");
-        return multipartResolver;
-    }
 
 }

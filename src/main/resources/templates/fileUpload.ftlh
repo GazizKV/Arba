@@ -9,6 +9,7 @@
 </head>
 <body>
 <form method="post" action="/fileUpload" enctype="multipart/form-data">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="file" name="file">
     <input type="submit" value="File Upload">
 </form>
