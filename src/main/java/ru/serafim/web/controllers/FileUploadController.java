@@ -33,8 +33,6 @@ public class FileUploadController {
     public String fileUpload(@RequestParam("file") MultipartFile file,
                              RedirectAttributes redirectAttributes) {
         fileUploadService.upload(file);
-        int i = 324;
         return "/loadedFile";
     }
-
 }

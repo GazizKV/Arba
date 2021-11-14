@@ -3,6 +3,7 @@ package ru.serafim.web.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -30,5 +31,8 @@ public class ChillPlace {
 
     @Column(length = 1000)
     private String description;
+
+    @OneToMany(mappedBy = "chill_place")
+    private List<FilesMetaData> filesMetaDataList;
 
 }

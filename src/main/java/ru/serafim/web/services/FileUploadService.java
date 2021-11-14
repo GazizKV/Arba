@@ -8,16 +8,53 @@ package ru.serafim.web.services;
 // To change this template use File | Settings | File Templates.
 
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.codec.multipart.Part;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import ru.serafim.web.models.FilesMetaData;
+import ru.serafim.web.repositories.FilesMetaDataRepository;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 public class FileUploadService {
 
+    private FilesMetaDataRepository filesMetaDataRepository;
+
+    private Path STORAGE_PATH;
+
+    @Autowired
+    public FileUploadService(FilesMetaDataRepository filesMetaDataRepository) {
+        this.filesMetaDataRepository = filesMetaDataRepository;
+        try {
+            if(!(new File("Storage")).exists())
+                STORAGE_PATH = Files.createDirectory(Paths.get("Storage"));
+            STORAGE_PATH = Paths.get("Storage");
+        } catch (IOException e) {
+            System.out.println("Storage folder can not created.");
+            e.printStackTrace();
+        }
+    }
+
     public void upload(MultipartFile file) {
-        System.out.println(file.getName() + "file for upload)" + file.getOriginalFilename());
+        FilesMetaData filesMetaData = FilesMetaData.builder()
+                .contentType(file.getContentType())
+                .originalFileName(file.getOriginalFilename())
+                .size(file.getSize())
+                .storageFileName(UUID.randomUUID().toString())
+                .build();
+
+        filesMetaDataRepository.save(filesMetaData);
+
+        try {
+            Files.copy(file.getInputStream(), STORAGE_PATH.resolve(filesMetaData.getStorageFileName()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
