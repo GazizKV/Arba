@@ -15,11 +15,12 @@
 </style>
 <body>
 <hr>
-<form action="/chillPlaces/insertIntoDataBaseNewChillPlace">
-    <label for="title">Enter chillPlace's name or title:</label>
-    <input type="text" placeholder="enter ChillPlace's name(title)" id="title" ><br/>
+<form action="/chillPlaces/insertIntoDataBaseNewChillPlace" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <label for="name">Enter chillPlace's name or title:</label>
+    <@spring.formInput "chillPlaceDto.name" "placeholder='place name'"/><br/>
     <label for="description">Enter description of chill place:</label>
-    <input type="text" placeholder="enter description of place" id="description"><br/>
+    <@spring.formInput "chillPlaceDto.description" "placeholder='place description'"/><br/>
     <input type="submit" value="Submit">
 </form>
 <hr>
