@@ -9,12 +9,12 @@ package ru.serafim.web.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.serafim.web.services.FileUploadServiceImpl;
 
 @RequiredArgsConstructor
@@ -31,10 +31,9 @@ public class FileUploadController {
 
     @PostMapping
     public String fileUpload(@RequestParam("file") MultipartFile file,
-                             Model model) {
-        fileUploadServiceImpl.upload(file);
+                             @RequestParam("description") String description) {
+        fileUploadServiceImpl.upload(file, description);
 
-        model.addAttribute("file", file);
         return "/loadedFile";
     }
 }

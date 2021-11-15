@@ -27,6 +27,7 @@ public class FileMetaDataDto {
     private Long size;
     private String contentType;
     private ChillPlaceDto chillPlaceDto;
+    private String description;
 
     public static FileMetaDataDto from(FilesMetaData filesMetaData) {
         ChillPlace chillPlace = filesMetaData.getChill_place();
@@ -38,6 +39,7 @@ public class FileMetaDataDto {
                 .contentType(filesMetaData.getContentType())
                 .originalFileName(filesMetaData.getOriginalFileName())
                 .chillPlaceDto(chillPlaceDto)
+                .description(filesMetaData.getDescription())
                 .build();
     }
 

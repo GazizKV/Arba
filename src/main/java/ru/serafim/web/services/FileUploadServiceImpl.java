@@ -42,12 +42,13 @@ public class FileUploadServiceImpl implements FileUploadService {
     }
 
     @Override
-    public void upload(MultipartFile file) {
+    public void upload(MultipartFile file, String description) {
         FilesMetaData filesMetaData = FilesMetaData.builder()
                 .contentType(file.getContentType())
                 .originalFileName(file.getOriginalFilename())
                 .size(file.getSize())
                 .storageFileName(UUID.randomUUID().toString())
+                .description(description)
                 .build();
 
         filesMetaDataRepository.save(filesMetaData);

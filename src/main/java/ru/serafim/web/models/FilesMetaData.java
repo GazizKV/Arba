@@ -39,5 +39,7 @@ public class FilesMetaData {
     @JoinColumn(name = "chill_place_id")
     private ChillPlace chill_place;
 
+    @Column(length = 1000)
+    private String description;
 
 }

@@ -15,7 +15,7 @@
 <html>
 <body>
 <h1><@spring.message 'restPlace.page.header'/></h1>
-<h2><@spring.message 'restPlace.page.description'/></h2>
-<p>Text description: ${restPlace.description}</p>
+<h2>Description of chill place</h2>
+<p>${place.description}</p>
 </body>
 </html>
