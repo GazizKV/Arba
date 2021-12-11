@@ -43,5 +43,15 @@ public class ChillPlacesServiceImpl implements ChillPlacesService {
         return from(chillPlaceRepository.findAllByName(name));
     }
 
+    @Override
+    public void save(ChillPlaceDto chillPlaceDto) {
+        ChillPlace chillPlace = ChillPlace.builder()
+                .name(chillPlaceDto.getName())
+                .serviceRate(chillPlaceDto.getServiceRate())
+                .description(chillPlaceDto.getDescription())
+                .build();
+        chillPlaceRepository.save(chillPlace);
+    }
+
 
 }

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.serafim.web.dto.ChillPlaceDto;
 import ru.serafim.web.services.ChillPlacesService;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/chillPlaces")
@@ -20,15 +22,18 @@ public class ChillPlacesController {
 
     @GetMapping
     public String getRests(Model model) {
-        model.addAttribute("chillPlaces", chillPlacesService.getAllRestPlases());
+        List<ChillPlaceDto> allRestPlases = chillPlacesService.getAllRestPlases();
+        model.addAttribute("chillPlaces", allRestPlases);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
+        log.info("allRastPlases {}", allRestPlases);
         return "chillPlaces";
     }
 
     @PostMapping("/insertIntoDataBaseNewChillPlace")
-    public String inserNewChillPlace(ChillPlaceDto chillPlaceDto, Model model) {
-        int i = 0;
-        String name = chillPlaceDto.getName();
+    public String insertNewChillPlace(ChillPlaceDto chillPlaceDto, Model model) {
+        log.info("chillplaceDto is {}", chillPlaceDto.toString());
+        chillPlaceDto.setServiceRate(5);    // set the average service rate
+        chillPlacesService.save(chillPlaceDto);
         model.addAttribute("chillPlaces", chillPlacesService.getAllRestPlases());
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
         return "/chillPlaces";

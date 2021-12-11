@@ -24,9 +24,7 @@ public class ChillPlaceDto {
         return ChillPlaceDto.builder()
                 .id(place.getId())
                 .name(place.getName())
-                .accountDto(AccountDto.from(place.getAccount()))
                 .serviceRate(place.getServiceRate())
-                .contactDto(ContactDto.from(place.getContact_id()))
                 .description(place.getDescription())
                 .build();
     }

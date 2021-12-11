@@ -41,7 +41,7 @@
             </td>
             <td>${place.name}</td>
             <td>${place.serviceRate}</td>
-            <td>${place.contactDto.email}</td>
+            <td>${place.description}</td>
             <td></td>
         </tr>
     </#list>

@@ -20,6 +20,7 @@ public class ContactDto {
     private List<Phone> phoneList;
 
     public static ContactDto from(Contact contact) {
+        if(contact == null) return null;
         return ContactDto.builder()
                 .email(contact.getEmail())
                 .addressList(contact.getAddressList())
