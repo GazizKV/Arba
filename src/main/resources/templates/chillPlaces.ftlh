@@ -12,6 +12,9 @@
     label, input {
         margin: 10px;
     }
+    table, tr, td {
+        border: 1px solid;
+    }
 </style>
 <body>
 <hr>
@@ -28,12 +31,13 @@
     <input type="submit" value="Creat chillPlace">
 </form>
 <hr>
-<table id="accounts_table">
+<table id="chillPlaces_table">
     <tr>
         <th>Action</th>
         <th>Title</th>
         <th>Service rate</th>
         <th>Contacts</th>
+        <th>Load file or photo into place</th>
     </tr>
     <#list chillPlaces as place>
         <tr>

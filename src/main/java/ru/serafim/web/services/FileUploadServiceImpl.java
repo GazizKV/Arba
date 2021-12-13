@@ -11,6 +11,7 @@ package ru.serafim.web.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import ru.serafim.web.models.ChillPlace;
 import ru.serafim.web.models.FilesMetaData;
 import ru.serafim.web.repositories.ChillPlaceRepository;
 import ru.serafim.web.repositories.FilesMetaDataRepository;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -37,7 +39,7 @@ public class FileUploadServiceImpl implements FileUploadService {
         this.filesMetaDataRepository = filesMetaDataRepository;
         this.chillPlaceRepository = chillPlaceRepository;
         try {
-            if(!(new File("Storage")).exists())
+            if (!(new File("Storage")).exists())
                 STORAGE_PATH = Files.createDirectory(Paths.get("Storage"));
             STORAGE_PATH = Paths.get("Storage");
         } catch (IOException e) {
@@ -47,23 +49,28 @@ public class FileUploadServiceImpl implements FileUploadService {
     }
 
     @Override
-    public void upload(MultipartFile file, String description, Long id) {
+    public String upload(MultipartFile file, String description, Long id) {
 
-        FilesMetaData filesMetaData = FilesMetaData.builder()
-                .contentType(file.getContentType())
-                .originalFileName(file.getOriginalFilename())
-                .size(file.getSize())
+        Optional<ChillPlace> chillPlace = chillPlaceRepository.findById(id);
+        if (chillPlace.isPresent()) {
 
-                .storageFileName(UUID.randomUUID().toString())
-                .description(description)
-                .build();
-
-        filesMetaDataRepository.save(filesMetaData);
-
-        try {
-            Files.copy(file.getInputStream(), STORAGE_PATH.resolve(filesMetaData.getStorageFileName()));
-        } catch (IOException e) {
-            e.printStackTrace();
+            FilesMetaData filesMetaData = FilesMetaData.builder()
+                    .contentType(file.getContentType())
+                    .originalFileName(file.getOriginalFilename())
+                    .size(file.getSize())
+                    .chill_place(chillPlace.get())
+                    .storageFileName(UUID.randomUUID().toString())
+                    .description(description)
+                    .build();
+            filesMetaDataRepository.save(filesMetaData);
+            try {
+                Files.copy(file.getInputStream(), STORAGE_PATH.resolve(filesMetaData.getStorageFileName()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return "Loaded successfully";
+        } else {
+            return "Can not load because id is wrong";
         }
     }
 }

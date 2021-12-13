@@ -27,6 +27,7 @@ public class ChillPlacesController {
         List<ChillPlaceDto> allRestPlases = chillPlacesService.getAllRestPlases();
         model.addAttribute("chillPlaces", allRestPlases);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
+        model.addAttribute("uploadMessage", "");
         log.info("allRastPlases {}", allRestPlases);
         return "chillPlaces";
     }
@@ -56,10 +57,11 @@ public class ChillPlacesController {
                               @RequestParam("description") String description,
                               Model model) {
 
-        fileUploadService.upload(file, description, id);
+        String upload = fileUploadService.upload(file, description, id);
         List<ChillPlaceDto> allRestPlases = chillPlacesService.getAllRestPlases();
         model.addAttribute("chillPlaces", allRestPlases);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
+        model.addAttribute("uploadMessage", upload);
         return "/chillPlaces";
     }
 
