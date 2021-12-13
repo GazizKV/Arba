@@ -15,4 +15,6 @@ public interface ChillPlacesService {
     ChillPlaceDto getChillPlaceByName(String name);
 
     void save(ChillPlaceDto chillPlaceDto);
+
+    void deleteById(Long id);
 }

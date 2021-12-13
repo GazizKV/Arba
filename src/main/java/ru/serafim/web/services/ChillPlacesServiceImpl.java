@@ -53,5 +53,10 @@ public class ChillPlacesServiceImpl implements ChillPlacesService {
         chillPlaceRepository.save(chillPlace);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        chillPlaceRepository.deleteById(id);
+    }
+
 
 }

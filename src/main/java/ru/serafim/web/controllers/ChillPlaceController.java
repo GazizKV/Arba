@@ -27,6 +27,7 @@ public class ChillPlaceController {
     public String getResult(@PathVariable("chillPlace_id") Long id, Model model) {
         ChillPlaceDto chillPlaceDto = chillPlacesService.getChillPlaceById(id);
         model.addAttribute("place", chillPlaceDto);
-        return "chillPlace";
+        return "/chillPlace";
     }
+
 }

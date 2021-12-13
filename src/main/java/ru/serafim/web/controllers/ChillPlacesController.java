@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.serafim.web.dto.ChillPlaceDto;
@@ -38,4 +39,15 @@ public class ChillPlacesController {
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
         return "/chillPlaces";
     }
+
+    @PostMapping("/{chillPlace_id}/delete")
+    public String deletePlace(@PathVariable("chillPlace_id") Long id, Model model) {
+        chillPlacesService.deleteById(id);
+        List<ChillPlaceDto> allRestPlases = chillPlacesService.getAllRestPlases();
+        model.addAttribute("chillPlaces", allRestPlases);
+        model.addAttribute("chillPlaceDto", new ChillPlaceDto());
+        return "/chillPlaces";
+    }
+
+
 }
