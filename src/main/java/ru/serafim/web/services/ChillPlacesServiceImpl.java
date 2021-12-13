@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.serafim.web.dto.ChillPlaceDto;
 import ru.serafim.web.models.ChillPlace;
+import ru.serafim.web.repositories.AddressRepository;
 import ru.serafim.web.repositories.ChillPlaceRepository;
+import ru.serafim.web.repositories.ContactRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +19,10 @@ import static ru.serafim.web.dto.ChillPlaceDto.from;
 public class ChillPlacesServiceImpl implements ChillPlacesService {
 
     private final ChillPlaceRepository chillPlaceRepository;
+
+    private final ContactRepository contactRepository;
+
+    private final AddressRepository addressRepository;
 
     @Override
     public List<ChillPlaceDto> getAllRestPlases() {

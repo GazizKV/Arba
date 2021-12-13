@@ -15,6 +15,10 @@
 </style>
 <body>
 <hr>
+<form method="get" action="/profile">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="Profile">
+</form>
 <form action="/chillPlaces/insertIntoDataBaseNewChillPlace" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <label for="name">Enter chillPlace's name or title:</label>

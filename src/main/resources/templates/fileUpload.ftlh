@@ -15,5 +15,14 @@
     <input type="file" name="file">
     <input type="submit" value="File Upload">
 </form>
+<form method="get" action="/profile">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="Profile">
+</form>
+
+<form method="get" action="/chillPlaces">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="CillPlaces">
+</form>
 </body>
 </html>

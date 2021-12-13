@@ -21,9 +21,8 @@ public class ChillPlace {
 
     private Integer serviceRate;
 
-    @OneToOne
-    @JoinColumn(name = "contct_id")
-    private Contact contact_id;
+    @OneToMany(mappedBy = "chill_place", cascade = CascadeType.ALL)
+    private List<Contact> contact;
 
     @ManyToOne
     @JoinColumn(name = "account_id")
@@ -32,7 +31,7 @@ public class ChillPlace {
     @Column(length = 1000)
     private String description;
 
-    @OneToMany(mappedBy = "chill_place")
+    @OneToMany(mappedBy = "chill_place", cascade = CascadeType.ALL)
     private List<FilesMetaData> filesMetaDataList;
 
 }
