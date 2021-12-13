@@ -11,10 +11,8 @@ import ru.serafim.web.repositories.AccountsRepository;
 @RequiredArgsConstructor
 public class ProfileController {
 
-    private final AccountsRepository accountsRepository;
-
     @RequestMapping()
-    public String getProfilePage(Model model) {
+    public String getProfilePage() {
         return "profile";
     }
 

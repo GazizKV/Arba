@@ -13,6 +13,7 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="text" name="description" placeholder="description"/>
     <input type="file" name="file">
+    <input type="text" name="id" placeholder="chillPlace id">
     <input type="submit" value="File Upload">
 </form>
 <form method="get" action="/profile">
@@ -22,7 +23,7 @@
 
 <form method="get" action="/chillPlaces">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="submit" value="CillPlaces">
+    <input type="submit" value="ChillPlaces">
 </form>
 </body>
 </html>

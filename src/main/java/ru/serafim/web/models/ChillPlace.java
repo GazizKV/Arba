@@ -22,6 +22,7 @@ public class ChillPlace {
     private Integer serviceRate;
 
     @OneToMany(mappedBy = "chill_place", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Contact> contact;
 
     @ManyToOne
@@ -32,6 +33,7 @@ public class ChillPlace {
     private String description;
 
     @OneToMany(mappedBy = "chill_place", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<FilesMetaData> filesMetaDataList;
 
 }

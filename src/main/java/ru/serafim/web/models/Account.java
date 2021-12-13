@@ -42,6 +42,10 @@ public class Account {
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     @ToString.Exclude
+    private List<Product> products;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<ChillPlace> chillPlace;
 
     private String email;

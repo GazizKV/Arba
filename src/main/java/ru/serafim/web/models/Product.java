@@ -30,6 +30,10 @@ public class Product {
     @Column(name = "produce_date")
     private LocalDate produceDate;
 
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

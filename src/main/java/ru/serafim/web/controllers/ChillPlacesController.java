@@ -4,12 +4,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.serafim.web.dto.ChillPlaceDto;
 import ru.serafim.web.services.ChillPlacesService;
+import ru.serafim.web.services.FileUploadService;
 
 import java.util.List;
 
@@ -20,6 +19,8 @@ import java.util.List;
 public class ChillPlacesController {
 
     private final ChillPlacesService chillPlacesService;
+
+    private final FileUploadService fileUploadService;
 
     @GetMapping
     public String getRests(Model model) {
@@ -43,6 +44,19 @@ public class ChillPlacesController {
     @PostMapping("/{chillPlace_id}/delete")
     public String deletePlace(@PathVariable("chillPlace_id") Long id, Model model) {
         chillPlacesService.deleteById(id);
+        List<ChillPlaceDto> allRestPlases = chillPlacesService.getAllRestPlases();
+        model.addAttribute("chillPlaces", allRestPlases);
+        model.addAttribute("chillPlaceDto", new ChillPlaceDto());
+        return "/chillPlaces";
+    }
+
+    @PostMapping("/chillPlaces/upLoadPhoto/{chillPlace_id}")
+    public String upLoadPhoto(@PathVariable("chillPlace_id") Long id,
+                              @RequestParam("file") MultipartFile file,
+                              @RequestParam("description") String description,
+                              Model model) {
+
+        fileUploadService.upload(file, description, id);
         List<ChillPlaceDto> allRestPlases = chillPlacesService.getAllRestPlases();
         model.addAttribute("chillPlaces", allRestPlases);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());

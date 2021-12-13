@@ -27,8 +27,10 @@ public class Contact {
 
 
     @OneToMany(mappedBy = "contact",cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Address> addressList;
 
     @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Phone> phoneList;
 }

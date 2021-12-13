@@ -18,6 +18,10 @@
         <td>Type:</td>
         <td>${file.contentType}</td>
     </tr>
+    <tr>
+        <td>Message:</td>
+        <td>${Message}</td>
+    </tr>
 </table>
 </body>
 </html>

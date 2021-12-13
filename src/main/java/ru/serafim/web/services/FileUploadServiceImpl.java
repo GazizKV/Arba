@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ru.serafim.web.models.FilesMetaData;
+import ru.serafim.web.repositories.ChillPlaceRepository;
 import ru.serafim.web.repositories.FilesMetaDataRepository;
 
 import java.io.File;
@@ -24,13 +25,17 @@ import java.util.UUID;
 @Service
 public class FileUploadServiceImpl implements FileUploadService {
 
-    private FilesMetaDataRepository filesMetaDataRepository;
+    private final FilesMetaDataRepository filesMetaDataRepository;
 
     private Path STORAGE_PATH;
 
+    private final ChillPlaceRepository chillPlaceRepository;
+
     @Autowired
-    public FileUploadServiceImpl(FilesMetaDataRepository filesMetaDataRepository) {
+    public FileUploadServiceImpl(FilesMetaDataRepository filesMetaDataRepository,
+                                 ChillPlaceRepository chillPlaceRepository) {
         this.filesMetaDataRepository = filesMetaDataRepository;
+        this.chillPlaceRepository = chillPlaceRepository;
         try {
             if(!(new File("Storage")).exists())
                 STORAGE_PATH = Files.createDirectory(Paths.get("Storage"));
@@ -42,11 +47,13 @@ public class FileUploadServiceImpl implements FileUploadService {
     }
 
     @Override
-    public void upload(MultipartFile file, String description) {
+    public void upload(MultipartFile file, String description, Long id) {
+
         FilesMetaData filesMetaData = FilesMetaData.builder()
                 .contentType(file.getContentType())
                 .originalFileName(file.getOriginalFilename())
                 .size(file.getSize())
+
                 .storageFileName(UUID.randomUUID().toString())
                 .description(description)
                 .build();
