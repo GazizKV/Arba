@@ -40,7 +40,11 @@ public class Account {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Product> products;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<ChillPlace> chillPlace;
 

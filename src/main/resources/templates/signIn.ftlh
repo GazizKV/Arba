@@ -21,5 +21,9 @@
     </label>
     <input type="submit" value="Sing In">
 </form>
+<form method="get" action="/signUp">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="To signUp Page">
+</form>
 </body>
 </html>

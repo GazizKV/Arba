@@ -13,17 +13,19 @@ import java.util.stream.Collectors;
 @Setter
 @Getter
 public class ChillPlaceDto {
+    private Long id;
     private String name;
     private Integer serviceRate;
     private ContactDto contactDto;
     private AccountDto accountDto;
+    private String description;
 
     public static ChillPlaceDto from(ChillPlace place) {
         return ChillPlaceDto.builder()
+                .id(place.getId())
                 .name(place.getName())
-                .accountDto(AccountDto.from(place.getAccount()))
                 .serviceRate(place.getServiceRate())
-                .contactDto(ContactDto.from(place.getContact_id()))
+                .description(place.getDescription())
                 .build();
     }
 

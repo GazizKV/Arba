@@ -15,7 +15,15 @@
 <html>
 <body>
 <h1><@spring.message 'restPlace.page.header'/></h1>
-<h2><@spring.message 'restPlace.page.description'/></h2>
-<p>Text description: ${restPlace.description}</p>
+<h2>Description of chill place</h2>
+<p>${place.description}</p>
+<form method="post" action="/chillPlaces/${place.id}/delete">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="Delete">
+</form>
+<form method="get" action="/chillPlaces">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="Back">
+</form>
 </body>
 </html>

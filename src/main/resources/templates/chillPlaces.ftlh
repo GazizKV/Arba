@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
+<#import "spring.ftl" as spring/>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +8,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RestPlace</title>
 </head>
+<style>
+    label, input {
+        margin: 10px;
+    }
+</style>
 <body>
+<hr>
+<form method="get" action="/profile">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="Profile">
+</form>
+<form action="/chillPlaces/insertIntoDataBaseNewChillPlace" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <label for="name">Enter chillPlace's name or title:</label>
+    <@spring.formInput "chillPlaceDto.name" "placeholder='place name'"/><br/>
+    <label for="description">Enter description of chill place:</label>
+    <@spring.formInput "chillPlaceDto.description" "placeholder='place description'"/><br/>
+    <input type="submit" value="Creat chillPlace">
+</form>
+<hr>
 <table id="accounts_table">
     <tr>
         <th>Action</th>
@@ -15,18 +35,24 @@
         <th>Service rate</th>
         <th>Contacts</th>
     </tr>
-    <#list chillPlaces as chillPlace>
+    <#list chillPlaces as place>
         <tr>
             <td>
-                <form method="post" action="/chillPlaces/${chillPlace.name}/select">
+                <form method="post" action="/chillPlace/${place.id}/select">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     <input type="submit" value="Select">
                 </form>
             </td>
-            <td>${chillPlace.name}</td>
-            <td>${chillPlace.serviceRate}</td>
-            <td>${chillPlace.contactDto.email}</td>
-            <td></td>
+            <td>${place.name}</td>
+            <td>${place.serviceRate}</td>
+            <td>${place.description}</td>
+            <td>
+                <form action="/chillPlaces/upLoadPhoto/${place.id}">
+                    <input type="text" name="description" placeholder="Photo description"/>
+                    <input type="file" name="file">
+                    <input type="submit" value="Photo Upload">
+                </form>
+            </td>
         </tr>
     </#list>
 </table>

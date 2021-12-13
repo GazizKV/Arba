@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ChillPlaceRepository extends JpaRepository<ChillPlace, Long> {
     ChillPlace findAllByName(String name);
+
+    void deleteById(Long id);
 }
