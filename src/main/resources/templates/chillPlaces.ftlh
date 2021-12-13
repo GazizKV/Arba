@@ -31,6 +31,7 @@
     <input type="submit" value="Creat chillPlace">
 </form>
 <hr>
+<div><p>Fie upload message: ${uploadMessage}</p></div>
 <table id="chillPlaces_table">
     <tr>
         <th>Action</th>
@@ -51,7 +52,8 @@
             <td>${place.serviceRate}</td>
             <td>${place.description}</td>
             <td>
-                <form action="/chillPlaces/upLoadPhoto/${place.id}">
+                <form action="/chillPlaces/upLoadPhoto/${place.id}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     <input type="text" name="description" placeholder="Photo description"/>
                     <input type="file" name="file">
                     <input type="submit" value="Photo Upload">

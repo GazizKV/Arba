@@ -51,7 +51,7 @@ public class ChillPlacesController {
         return "/chillPlaces";
     }
 
-    @PostMapping("/chillPlaces/upLoadPhoto/{chillPlace_id}")
+    @PostMapping("/upLoadPhoto/{chillPlace_id}")
     public String upLoadPhoto(@PathVariable("chillPlace_id") Long id,
                               @RequestParam("file") MultipartFile file,
                               @RequestParam("description") String description,
