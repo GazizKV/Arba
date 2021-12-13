@@ -7,6 +7,7 @@ import ru.serafim.web.models.Account;
 import ru.serafim.web.repositories.AccountsRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static ru.serafim.web.dto.AccountDto.from;
 
@@ -26,5 +27,10 @@ public class AccountServiceImpl implements AccountService {
         Account account = accountsRepository.getById(accountId);
         account.setState(Account.State.DELETED);
         accountsRepository.save(account);
+    }
+
+    @Override
+    public Optional<Account> getAccountById(Long id) {
+        return accountsRepository.findById(id);
     }
 }

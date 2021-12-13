@@ -22,26 +22,26 @@
     <@spring.bind path="productForm"/>
     <p class="error">${spring.status.errorMessage}</p>
     <label for="name"><@spring.message 'product.page.enterName'/></label>
-    <#assign i18Tooltip><@spring.message code='product.page.placeholder.productName'/></#assign>
-    <@spring.formInput "productForm.name" "placeholder=${i18Tooltip}"/>
+    <#assign placeHoldersVariable><@spring.message code='product.page.placeholder.productName'/></#assign>
+    <@spring.formInput "productForm.name" "placeholder=${placeHoldersVariable}"/>
     <@spring.showErrors "<br>" "error"/>
     <br>
     <br>
     <label for="mass"><@spring.message 'product.page.enterMass'/></label>
-    <#assign i18Tooltip><@spring.message code='product.page.placeholder.productMass'/></#assign>
-    <@spring.formInput "productForm.mass" "placeholder=${i18Tooltip}"/>
+    <#assign placeHoldersVariable><@spring.message code='product.page.placeholder.productMass'/></#assign>
+    <@spring.formInput "productForm.mass" "placeholder=${placeHoldersVariable}"/>
     <@spring.showErrors "<br>" "error"/>
     <br>
     <br>
     <label for="vin"><@spring.message 'product.page.enterVin'/></label>
-    <#assign i18Tooltip><@spring.message code='product.page.placeholder.productVin'/></#assign>
-    <@spring.formInput "productForm.vin" "placeholder=${i18Tooltip}"/>
+    <#assign placeHoldersVariable><@spring.message code='product.page.placeholder.productVin'/></#assign>
+    <@spring.formInput "productForm.vin" "placeholder=${placeHoldersVariable}"/>
     <@spring.showErrors "<br>" "error"/>
     <br>
     <br>
     <label for="date"><@spring.message 'product.page.enterProductProducedDate'/></label>
-    <#assign i18Tooltip><@spring.message code='product.page.placeholder.productDate'/></#assign>
-    <@spring.formInput "productForm.date" "placeholder=${i18Tooltip}"/>
+    <#assign placeHoldersVariable><@spring.message code='product.page.placeholder.productDate'/></#assign>
+    <@spring.formInput "productForm.date" "placeholder=${placeHoldersVariable}"/>
     <@spring.showErrors "<br>" "error"/>
     <br>
     <br>

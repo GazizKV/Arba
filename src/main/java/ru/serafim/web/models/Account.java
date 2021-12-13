@@ -2,12 +2,10 @@ package ru.serafim.web.models;
 
 import lombok.*;
 import org.hibernate.Hibernate;
-import org.springframework.web.bind.annotation.Mapping;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -42,9 +40,13 @@ public class Account {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     @ToString.Exclude
-    private List<RestingPlace> restingPlaceList;
+    private List<Product> products;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<ChillPlace> chillPlace;
 
     private String email;
     private String password;

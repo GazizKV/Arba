@@ -21,6 +21,7 @@ public class AccountDto {
     private String email;
 
     public static AccountDto from(Account account) {
+        if(account == null) return null;
         return AccountDto.builder()
                 .id(account.getId())
                 .firstName(account.getFirstName())

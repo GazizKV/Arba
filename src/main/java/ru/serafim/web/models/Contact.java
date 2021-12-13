@@ -1,10 +1,10 @@
 package ru.serafim.web.models;
 
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
-import ru.serafim.web.models.Address;
 
 @Getter
 @Setter
@@ -21,14 +21,16 @@ public class Contact {
 
     private String email;
 
-    @OneToOne
-    @JoinColumn(name = "resting_plase_id")
-    private RestingPlace restingPlace;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "chill_place_id")
+    private ChillPlace chill_place;
 
 
-    @OneToMany(mappedBy = "contact")
+    @OneToMany(mappedBy = "contact",cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Address> addressList;
 
-    @OneToMany(mappedBy = "contact")
+    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Phone> phoneList;
 }

@@ -3,6 +3,7 @@ package ru.serafim.web.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class RestingPlace {
+public class ChillPlace {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,12 +21,19 @@ public class RestingPlace {
 
     private Integer serviceRate;
 
-    @OneToOne
-    @JoinColumn(name = "contct_id")
-    private Contact contact_id;
+    @OneToMany(mappedBy = "chill_place", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Contact> contact;
 
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
+
+    @Column(length = 1000)
+    private String description;
+
+    @OneToMany(mappedBy = "chill_place", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<FilesMetaData> filesMetaDataList;
 
 }

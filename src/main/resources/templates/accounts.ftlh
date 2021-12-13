@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<#import "spring.ftl" as spring/>
 <html>
 <head>
     <title>Accounts</title>
