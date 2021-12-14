@@ -12,6 +12,9 @@
     label, input {
         margin: 10px;
     }
+    table {
+        width: 100%;
+    }
     table, tr, td {
         border: 1px solid;
     }
@@ -53,6 +56,7 @@
         <th>Service rate</th>
         <th>Description</th>
         <th>Load file or photo into place</th>
+        <th>Chill place photos</th>
     </tr>
     <#list chillPlaces as place>
         <tr>
@@ -68,10 +72,13 @@
             <td>
                 <form action="/chillPlaces/upLoadPhoto/${place.id}" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                    <input type="text" name="description" placeholder="Photo description"/>
-                    <input type="file" name="file">
+                    <input type="text" name="description" placeholder="Photo description"/><br>
+                    <input type="file" name="file"><br>
                     <input type="submit" value="Photo Upload">
                 </form>
+            </td>
+            <td>
+                <a href="/photos/${place.id}" target="_blank">Link to photo for that chill place</a>
             </td>
         </tr>
     </#list>
