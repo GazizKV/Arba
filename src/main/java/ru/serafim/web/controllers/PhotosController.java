@@ -10,20 +10,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.serafim.web.services.PhotoService;
+import ru.serafim.web.models.FilesMetaData;
+import ru.serafim.web.services.PhotoServiceImpl;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/photo")
 public class PhotosController {
 
-    private final PhotoService photoService;
+    private final PhotoServiceImpl photoService;
 
     @GetMapping("/getPhoto/{place_id}")
     public String getPhotos(
             @PathVariable("place_id") Long id,
             Model model) {
-        photoService.getAllPhotoByPlaceId(id);
+        List<FilesMetaData> filesMetaDataList = photoService.getAllPhotoByPlaceId(id);
         return "photo";
     }
 
