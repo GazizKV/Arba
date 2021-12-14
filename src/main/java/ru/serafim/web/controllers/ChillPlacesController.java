@@ -40,12 +40,11 @@ public class ChillPlacesController {
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
         model.addAttribute("uploadMessage", "Nothing for load");
         if(!(searchString == null)) {
-            List<ChillPlaceDto> filtredChillPlaces = new ArrayList<>();
-            for (ChillPlaceDto place :
-                    allRestPlaces) {
-                if (place.getName().contains(searchString)) filtredChillPlaces.add(place);
+            List<ChillPlaceDto> filteredChillPlaces = new ArrayList<>();
+            for (ChillPlaceDto place : allRestPlaces) {
+                if (place.getName().contains(searchString)) filteredChillPlaces.add(place);
             }
-            model.addAttribute("chillPlaces", filtredChillPlaces);
+            model.addAttribute("chillPlaces", filteredChillPlaces);
             return "/chillPlaces";
         }
         model.addAttribute("chillPlaces", allRestPlaces);

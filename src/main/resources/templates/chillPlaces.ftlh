@@ -15,6 +15,13 @@
     table, tr, td {
         border: 1px solid;
     }
+    html {
+        width: 100%;
+    }
+    body {
+        width: 900px;
+        margin: 100px auto;
+    }
 </style>
 <body>
 <hr>
