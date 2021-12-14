@@ -78,7 +78,7 @@
                 </form>
             </td>
             <td>
-                <a href="/photos/${place.id}" target="_blank">Link to photo for that chill place</a>
+                <a href="/photo/getPhoto/${place.id}" target="_blank">Link to photo for that chill place</a>
             </td>
         </tr>
     </#list>
