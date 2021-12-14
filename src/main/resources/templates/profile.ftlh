@@ -7,6 +7,9 @@
         a {
             color: red;
         }
+        div, input, form {
+            margin: 20px;
+        }
     </style>
 </head>
 <html>

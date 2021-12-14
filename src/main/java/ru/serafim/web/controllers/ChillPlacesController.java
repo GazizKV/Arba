@@ -10,6 +10,7 @@ import ru.serafim.web.dto.ChillPlaceDto;
 import ru.serafim.web.services.ChillPlacesService;
 import ru.serafim.web.services.FileUploadService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -24,12 +25,31 @@ public class ChillPlacesController {
 
     @GetMapping
     public String getRests(Model model) {
-        List<ChillPlaceDto> allRestPlases = chillPlacesService.getAllRestPlases();
-        model.addAttribute("chillPlaces", allRestPlases);
+        List<ChillPlaceDto> allRestPlaces = chillPlacesService.getAllRestPlases();
+        model.addAttribute("chillPlaces", allRestPlaces);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
-        model.addAttribute("uploadMessage", "");
-        log.info("allRastPlases {}", allRestPlases);
-        return "chillPlaces";
+        model.addAttribute("uploadMessage", "Empty");
+        log.info("allRestPlaces {}", allRestPlaces);
+        return "/chillPlaces";
+    }
+
+    @PostMapping("/search")
+    public String getSearchRequest(Model model,
+                                   @RequestParam("searchString") String searchString) {
+        List<ChillPlaceDto> allRestPlaces = chillPlacesService.getAllRestPlases();
+        model.addAttribute("chillPlaceDto", new ChillPlaceDto());
+        model.addAttribute("uploadMessage", "Nothing for load");
+        if(!(searchString == null)) {
+            List<ChillPlaceDto> filtredChillPlaces = new ArrayList<>();
+            for (ChillPlaceDto place :
+                    allRestPlaces) {
+                if (place.getName().contains(searchString)) filtredChillPlaces.add(place);
+            }
+            model.addAttribute("chillPlaces", filtredChillPlaces);
+            return "/chillPlaces";
+        }
+        model.addAttribute("chillPlaces", allRestPlaces);
+        return "/chillPlaces";
     }
 
     @PostMapping("/insertIntoDataBaseNewChillPlace")
@@ -39,6 +59,7 @@ public class ChillPlacesController {
         chillPlacesService.save(chillPlaceDto);
         model.addAttribute("chillPlaces", chillPlacesService.getAllRestPlases());
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
+        model.addAttribute("uploadMessage", "Nothing for load");
         return "/chillPlaces";
     }
 
@@ -48,6 +69,7 @@ public class ChillPlacesController {
         List<ChillPlaceDto> allRestPlases = chillPlacesService.getAllRestPlases();
         model.addAttribute("chillPlaces", allRestPlases);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
+        model.addAttribute("uploadMessage", "Nothing for load");
         return "/chillPlaces";
     }
 
@@ -56,14 +78,11 @@ public class ChillPlacesController {
                               @RequestParam("file") MultipartFile file,
                               @RequestParam("description") String description,
                               Model model) {
-
         String upload = fileUploadService.upload(file, description, id);
-        List<ChillPlaceDto> allRestPlases = chillPlacesService.getAllRestPlases();
-        model.addAttribute("chillPlaces", allRestPlases);
+        List<ChillPlaceDto> allRestPlaces = chillPlacesService.getAllRestPlases();
+        model.addAttribute("chillPlaces", allRestPlaces);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
         model.addAttribute("uploadMessage", upload);
         return "/chillPlaces";
     }
-
-
 }

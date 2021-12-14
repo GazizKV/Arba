@@ -31,13 +31,20 @@
     <input type="submit" value="Creat chillPlace">
 </form>
 <hr>
-<div><p>Fie upload message: ${uploadMessage}</p></div>
+<form action="/chillPlaces/search" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <label for="Title searcher">Search by title</label>
+    <input type="text" name="searchString">
+    <input type="submit">
+</form>
+<hr>
+<div><p>File upload message: ${uploadMessage}</p></div>
 <table id="chillPlaces_table">
     <tr>
         <th>Action</th>
         <th>Title</th>
         <th>Service rate</th>
-        <th>Contacts</th>
+        <th>Description</th>
         <th>Load file or photo into place</th>
     </tr>
     <#list chillPlaces as place>
