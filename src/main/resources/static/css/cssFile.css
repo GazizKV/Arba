@@ -1,0 +1,53 @@
+input {
+    margin: 20px 0 0 0;
+}
+
+form {
+    margin: 20px;
+}
+ label, input {
+     margin: 10px;
+ }
+table {
+    width: 100%;
+}
+table, tr, td {
+    border: 1px solid;
+    border-radius: 10px;
+}
+html {
+    width: 100%;
+}
+body {
+    width: 900px;
+    margin: 100px auto;
+}
+
+#sign_in_form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-radius: 5vh;
+    border: dimgray solid 1px;
+    margin: auto;
+    width: fit-content;
+    padding: 2em;
+}
+
+#sign_in_form form {
+    padding: 2em;
+}
+
+#sign_in_form input {
+    height: 3vh;
+}
+
+#sign_in_form * {
+    flex-direction: column;
+    margin: auto;
+    display: flex;
+}
+#sign_in_form input {
+    border: solid 1px;
+    border-radius: 10px;
+}

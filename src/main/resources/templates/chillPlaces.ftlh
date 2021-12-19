@@ -7,25 +7,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RestPlace</title>
+    <link rel="stylesheet"
+          href="<@spring.url '/css/cssFile.css'/>"
+          type="text/css"
+          media="screen"/>
 </head>
-<style>
-    label, input {
-        margin: 10px;
-    }
-    table {
-        width: 100%;
-    }
-    table, tr, td {
-        border: 1px solid;
-    }
-    html {
-        width: 100%;
-    }
-    body {
-        width: 900px;
-        margin: 100px auto;
-    }
-</style>
 <body>
 <hr>
 <form method="get" action="/profile">

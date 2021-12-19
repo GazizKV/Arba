@@ -14,11 +14,21 @@
 </head>
 <html>
 <body>
-<h1><@spring.message 'profile.page.header'/></h1>
-<h2><@spring.message 'profile.page.description'/></h2>
+<h1>Chill place's photos</h1>
+<h2>Description chil place</h2>
+
+<div>
+    <c:forEach items="${streamList}" var="file">
+        <tr>
+            <td>|   ${file.encoding}    |</td>
+            <td>|   ${file.separator}   |</td>
+        </tr>
+    </c:forEach>
+</div>
+
 <form method="get" action="/chillPlaces">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="submit" value="ChillPlaces">
+    <input type="submit" value="Chill places">
 </form>
 <form method="get" action="/accounts">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
