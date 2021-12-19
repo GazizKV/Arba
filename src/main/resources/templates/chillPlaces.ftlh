@@ -33,6 +33,21 @@
     <input type="text" name="searchString">
     <input type="submit">
 </form>
+<div class="chillPlaceComponentContainer">
+    <div id="chillPlaceComponentContainer_photo"><img src="image" alt="photo"></div>
+    <div id="chillPlaceComponentContainer_title_keyWords">
+        <h3>title</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit libero. Sit amet
+            consectetur adipiscing elit ut aliquam purus. Porttitor leo a diam sollicitudin
+            tempor id eu. Lectus magna fringilla urna porttitor rhoncus dolor purus non.
+            Parturient montes nascetur ridiculus mus mauris. Ut lectus arcu bibendum at varius.
+        </p>
+    </div>
+    <div id="chillPlaceComponentContainer_contact">Contackts</div>
+</div>
 <hr>
 <div><p>File upload message: ${uploadMessage}</p></div>
 <table id="chillPlaces_table">
