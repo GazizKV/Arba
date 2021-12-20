@@ -19,8 +19,39 @@ html {
     width: 100%;
 }
 body {
+    border: 1px solid;
     width: 900px;
     margin: 100px auto;
+}
+
+.chillPlaceComponentContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#chillPlaceComponent_photo {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+}
+
+#chillPlaceComponent_title_keyWords {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 60%;
+}
+
+#chillPlaceComponent_title_keyWords * {
+    display: flex;
+    flex-direction: column;
+}
+
+#chillPlaceComponent_contact {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
 }
 
 #sign_in_form {
@@ -40,6 +71,10 @@ body {
 
 #sign_in_form input {
     height: 3vh;
+}
+
+#sign_in_form h2 {
+    padding: 2vh 0 0 0;
 }
 
 #sign_in_form * {
