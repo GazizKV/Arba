@@ -72,16 +72,5 @@ public class ChillPlacesController {
         return "/chillPlaces";
     }
 
-    @PostMapping("/upLoadPhoto/{chillPlace_id}")
-    public String upLoadPhoto(@PathVariable("chillPlace_id") Long id,
-                              @RequestParam("file") MultipartFile file,
-                              @RequestParam("description") String description,
-                              Model model) {
-        String upload = fileUploadService.upload(file, description, id);
-        List<ChillPlaceDto> allRestPlaces = chillPlacesService.getAllRestPlases();
-        model.addAttribute("chillPlaces", allRestPlaces);
-        model.addAttribute("chillPlaceDto", new ChillPlaceDto());
-        model.addAttribute("uploadMessage", upload);
-        return "/chillPlaces";
-    }
+
 }

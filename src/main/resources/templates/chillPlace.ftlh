@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title><@spring.message 'restPlace.page.title'/></title>
-    <style>
-        .error {
-            color: red;
-        }
-        input, label {
-            margin: 10px;
-        }
-    </style>
+    <link rel="stylesheet"
+          href="<@spring.url '/css/cssFile.css'/>"
+          type="text/css"
+          media="screen"/>
 </head>
 <html>
 <body>
@@ -25,5 +21,14 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="Back">
 </form>
+<h5>Load photo</h5>
+<form action="/chillPlace/upLoadPhoto/${place.id}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="text" name="description" placeholder="Photo description"/><br>
+    <input type="file" name="file"><br>
+    <input type="submit" value="Photo Upload">
+</form>
+<hr>
+<div><p>File upload message: ${uploadMessage}</p></div>
 </body>
 </html>
