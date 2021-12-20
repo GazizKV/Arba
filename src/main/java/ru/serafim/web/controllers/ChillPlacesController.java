@@ -51,16 +51,7 @@ public class ChillPlacesController {
         return "/chillPlaces";
     }
 
-    @PostMapping("/insertIntoDataBaseNewChillPlace")
-    public String insertNewChillPlace(ChillPlaceDto chillPlaceDto, Model model) {
-        log.info("chillplaceDto is {}", chillPlaceDto.toString());
-        chillPlaceDto.setServiceRate(5);    // set the average service rate
-        chillPlacesService.save(chillPlaceDto);
-        model.addAttribute("chillPlaces", chillPlacesService.getAllRestPlases());
-        model.addAttribute("chillPlaceDto", new ChillPlaceDto());
-        model.addAttribute("uploadMessage", "Nothing for load");
-        return "/chillPlaces";
-    }
+
 
     @PostMapping("/{chillPlace_id}/delete")
     public String deletePlace(@PathVariable("chillPlace_id") Long id, Model model) {

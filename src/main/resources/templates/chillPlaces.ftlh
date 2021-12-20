@@ -18,13 +18,9 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="Profile">
 </form>
-<form action="/chillPlaces/insertIntoDataBaseNewChillPlace" method="post">
+<form action="/addChillPlace/insertIntoDataBaseNewChillPlace" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <label for="name">Enter chillPlace's name or title:</label>
-    <@spring.formInput "chillPlaceDto.name" "placeholder='place name'"/><br/>
-    <label for="description">Enter description of chill place:</label>
-    <@spring.formInput "chillPlaceDto.description" "placeholder='place description'"/><br/>
-    <input type="submit" value="Creat chillPlace">
+    <input type="submit" value="Go to creat or add chillPlace">
 </form>
 <hr>
 <form action="/chillPlaces/search" method="post">
