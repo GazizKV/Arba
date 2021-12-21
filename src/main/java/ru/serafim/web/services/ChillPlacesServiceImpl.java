@@ -50,19 +50,21 @@ public class ChillPlacesServiceImpl implements ChillPlacesService {
     }
 
     @Override
-    public void save(ChillPlaceDto chillPlaceDto) {
+    public String save(ChillPlaceDto chillPlaceDto) {
         ChillPlace chillPlace = ChillPlace.builder()
                 .name(chillPlaceDto.getName())
                 .serviceRate(chillPlaceDto.getServiceRate())
                 .description(chillPlaceDto.getDescription())
                 .build();
-        chillPlaceRepository.save(chillPlace);
+        ChillPlace save = chillPlaceRepository.save(chillPlace);
+        if(save.equals(null)) {
+            return "File not saved, try again";
+        }
+        return "Loaded successfully";
     }
 
     @Override
     public void deleteById(Long id) {
         chillPlaceRepository.deleteById(id);
     }
-
-
 }

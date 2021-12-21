@@ -11,6 +11,7 @@ import ru.serafim.web.services.ChillPlacesService;
 import ru.serafim.web.services.FileUploadService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -29,6 +30,8 @@ public class ChillPlacesController {
         model.addAttribute("chillPlaces", allRestPlaces);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
         model.addAttribute("uploadMessage", "Empty");
+        HashSet<ChillPlaceDto> placeDtos = new HashSet<>(allRestPlaces);
+        model.addAttribute("places", placeDtos);
         log.info("allRestPlaces {}", allRestPlaces);
         return "/chillPlaces";
     }
@@ -51,16 +54,7 @@ public class ChillPlacesController {
         return "/chillPlaces";
     }
 
-    @PostMapping("/insertIntoDataBaseNewChillPlace")
-    public String insertNewChillPlace(ChillPlaceDto chillPlaceDto, Model model) {
-        log.info("chillplaceDto is {}", chillPlaceDto.toString());
-        chillPlaceDto.setServiceRate(5);    // set the average service rate
-        chillPlacesService.save(chillPlaceDto);
-        model.addAttribute("chillPlaces", chillPlacesService.getAllRestPlases());
-        model.addAttribute("chillPlaceDto", new ChillPlaceDto());
-        model.addAttribute("uploadMessage", "Nothing for load");
-        return "/chillPlaces";
-    }
+
 
     @PostMapping("/{chillPlace_id}/delete")
     public String deletePlace(@PathVariable("chillPlace_id") Long id, Model model) {
@@ -72,16 +66,5 @@ public class ChillPlacesController {
         return "/chillPlaces";
     }
 
-    @PostMapping("/upLoadPhoto/{chillPlace_id}")
-    public String upLoadPhoto(@PathVariable("chillPlace_id") Long id,
-                              @RequestParam("file") MultipartFile file,
-                              @RequestParam("description") String description,
-                              Model model) {
-        String upload = fileUploadService.upload(file, description, id);
-        List<ChillPlaceDto> allRestPlaces = chillPlacesService.getAllRestPlases();
-        model.addAttribute("chillPlaces", allRestPlaces);
-        model.addAttribute("chillPlaceDto", new ChillPlaceDto());
-        model.addAttribute("uploadMessage", upload);
-        return "/chillPlaces";
-    }
+
 }

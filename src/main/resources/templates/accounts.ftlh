@@ -3,6 +3,11 @@
 <html>
 <head>
     <title>Accounts</title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="<@spring.url '/css/cssFile.css'/>"/>
+
+    </style>
 </head>
 <body>
 <table id="accounts_table">
@@ -23,9 +28,20 @@
             <td>${account.id}</td>
             <td>${account.firstName}</td>
             <td>${account.lastName}</td>
-            <td></td>
         </tr>
     </#list>
 </table>
+<form method="get" action="/chillPlaces">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="Chill places">
+</form>
+<form method="get" action="/accounts">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="Accounts only for ADMIN">
+</form>
+<form method="get" action="/fileUpload">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="Upload file">
+</form>
 </body>
 </html>

@@ -1,0 +1,85 @@
+
+table {
+    width: 100%;
+}
+table, tr, td {
+    border: 1px solid;
+    border-radius: 10px;
+}
+html {
+    width: 100%;
+}
+body {
+    border: 1px solid;
+    width: 900px;
+    margin: 100px auto;
+}
+
+.chillPlaceComponentContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border: solid 1px;
+    margin: 1vh 0 1vh 0;
+    border-radius: 1vh;
+}
+
+.chillPlaceComponentContainer * {
+    display: flex;
+    flex-direction: row;
+}
+
+#chillPlaceComponent_photo {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+}
+
+#chillPlaceComponent_title_keyWords {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 60%;
+}
+
+#chillPlaceComponent_title_keyWords * {
+    display: flex;
+}
+
+#chillPlaceComponent_contact {
+    display: flex;
+    width: 19%;
+}
+
+#sign_in_form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-radius: 5vh;
+    border: dimgray solid 1px;
+    margin: auto;
+    width: fit-content;
+    padding: 2em;
+}
+
+#sign_in_form form {
+    padding: 2em;
+}
+
+#sign_in_form input {
+    height: 3vh;
+}
+
+#sign_in_form h2 {
+    padding: 2vh 0 0 0;
+}
+
+#sign_in_form * {
+    flex-direction: column;
+    margin: auto;
+    display: flex;
+}
+#sign_in_form input {
+    border: solid 1px;
+    border-radius: 10px;
+}

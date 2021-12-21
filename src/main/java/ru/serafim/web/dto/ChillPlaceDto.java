@@ -34,6 +34,9 @@ public class ChillPlaceDto {
     }
 
     public static List<ChillPlaceDto> from(List<ChillPlace> restingPlaces) {
-        return restingPlaces.stream().map(ChillPlaceDto::from).collect(Collectors.toList());
+        return restingPlaces
+                .stream()
+                .map(ChillPlaceDto::from)
+                .collect(Collectors.toList());
     }
 }
