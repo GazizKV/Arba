@@ -44,8 +44,8 @@ public class FileUploadController {
             );
             model.addAttribute("file", upload);
             model.addAttribute("Message", upload);
+            return "/loadedFile";
         }
-        model.addAttribute("file", null);
         model.addAttribute("Message", "File loaded unsuccessfully, wrong id");
         return "/loadedFile";
     }

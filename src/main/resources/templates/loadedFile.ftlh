@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>Submitted File</h2>
-<#if file.isEmpty()>
+<#if file?? && file.id??>
     <table>
         <tr>
             <td>OriginalFileName:</td>
