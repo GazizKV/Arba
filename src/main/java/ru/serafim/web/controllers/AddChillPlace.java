@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.serafim.web.dto.ChillPlaceDto;
+import ru.serafim.web.dto.ContactDto;
 import ru.serafim.web.services.ChillPlacesService;
 
 @RequiredArgsConstructor
@@ -24,19 +25,22 @@ public class AddChillPlace {
 
     @GetMapping
     public String getAddChillPlace(Model model) {
-        model.addAttribute("");
+        ContactDto contactDto = new ContactDto();
         model.addAttribute("uploadMessage", "Nothing loaded");
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
+        model.addAttribute("contactDto", contactDto);
         return "/addChillPlace";
     }
 
     @PostMapping("/insertIntoDataBaseNewChillPlace")
     public String insertNewChillPlace(ChillPlaceDto chillPlaceDto, Model model) {
-        log.info("chillplaceDto is {}", chillPlaceDto.toString());
+        log.info("ChillPlaceDto is {}", chillPlaceDto.toString());
         chillPlaceDto.setServiceRate(5);    // set the average service rate
         String save = chillPlacesService.save(chillPlaceDto);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
         model.addAttribute("uploadMessage", save);
         return "/addChillPlace";
     }
+
+    // TODO Add to chillPlaceDTO fields for contact and phones
 }

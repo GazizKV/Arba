@@ -29,6 +29,8 @@ public class ContactDto {
     }
 
     public static List<ContactDto> from(List<Contact> contactList) {
-        return contactList.stream().map(ContactDto::from).collect(Collectors.toList());
+        return contactList.stream()
+                .map(ContactDto::from)
+                .collect(Collectors.toList());
     }
 }

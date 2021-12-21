@@ -67,6 +67,4 @@ public class ChillPlacesServiceImpl implements ChillPlacesService {
     public void deleteById(Long id) {
         chillPlaceRepository.deleteById(id);
     }
-
-
 }

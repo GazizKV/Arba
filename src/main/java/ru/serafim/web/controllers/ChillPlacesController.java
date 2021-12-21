@@ -11,6 +11,7 @@ import ru.serafim.web.services.ChillPlacesService;
 import ru.serafim.web.services.FileUploadService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -29,6 +30,8 @@ public class ChillPlacesController {
         model.addAttribute("chillPlaces", allRestPlaces);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
         model.addAttribute("uploadMessage", "Empty");
+        HashSet<ChillPlaceDto> placeDtos = new HashSet<>(allRestPlaces);
+        model.addAttribute("places", placeDtos);
         log.info("allRestPlaces {}", allRestPlaces);
         return "/chillPlaces";
     }
