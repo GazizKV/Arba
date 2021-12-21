@@ -9,8 +9,11 @@ package ru.serafim.web.services;
 
 
 import org.springframework.web.multipart.MultipartFile;
+import ru.serafim.web.dto.FileMetaDataDto;
 
 public interface FileUploadService {
 
     String upload(MultipartFile file, String description, Long id);
+
+    FileMetaDataDto getFileById(String substring);
 }

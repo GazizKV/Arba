@@ -9,19 +9,23 @@
 </head>
 <body>
 <h2>Submitted File</h2>
-<table>
-    <tr>
-        <td>OriginalFileName:</td>
-        <td>${file.originalFilename}</td>
-    </tr>
-    <tr>
-        <td>Type:</td>
-        <td>${file.contentType}</td>
-    </tr>
-    <tr>
-        <td>Message:</td>
-        <td>${Message}</td>
-    </tr>
-</table>
+<#if file.isEmpty()>
+    <table>
+        <tr>
+            <td>OriginalFileName:</td>
+            <td>${file.originalFilename}</td>
+        </tr>
+        <tr>
+            <td>Type:</td>
+            <td>${file.contentType}</td>
+        </tr>
+        <tr>
+            <td>Message:</td>
+            <td>${Message}</td>
+        </tr>
+    </table>
+<#else>
+    <div><p>${Message}</p></div>
+</#if>
 </body>
 </html>
