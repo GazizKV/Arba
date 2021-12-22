@@ -1,12 +1,14 @@
 package ru.serafim.web.models;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
+@RequiredArgsConstructor
 @Builder
 @Entity
 @AllArgsConstructor
@@ -21,9 +23,9 @@ public class ChillPlace {
 
     private Integer serviceRate;
 
-    @OneToMany(mappedBy = "chill_place", cascade = CascadeType.ALL)
-    @ToString.Exclude
-    private List<Contact> contact;
+    private String phone;
+
+    private String address;
 
     @ManyToOne
     @JoinColumn(name = "account_id")
@@ -36,4 +38,6 @@ public class ChillPlace {
     @ToString.Exclude
     private List<FilesMetaData> filesMetaDataList;
 
+
+    // TODO Надо переместить добавление мест отдыха через Profile
 }

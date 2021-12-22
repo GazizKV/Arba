@@ -1,9 +1,6 @@
 package ru.serafim.web.dto;
 
 import lombok.*;
-import ru.serafim.web.models.Address;
-import ru.serafim.web.models.Contact;
-import ru.serafim.web.models.Phone;
 
 import java.util.List;
 import java.util.stream.Collectors;

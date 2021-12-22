@@ -5,7 +5,6 @@ package ru.serafim.web.repositories;
 //  project: serafim
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.serafim.web.models.Contact;
 
 public interface ContactRepository extends JpaRepository<Contact, Long> {
 
