@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import ru.serafim.web.dto.FileMetaDataDto;
 import ru.serafim.web.services.AccountService;
 import ru.serafim.web.services.FileUploadService;
 
@@ -37,8 +38,13 @@ public class FileUploadController {
                              @RequestParam("description") String description,
                              Long id, Model model) {
         if(accountService.getAccountById(id).isPresent()) {
-            fileUploadService.upload(file, description, id);
-            model.addAttribute("Message", "File loaded successfully");
+            String upload = fileUploadService.upload(file, description, id);
+            FileMetaDataDto fileMetaDataDto = fileUploadService.getFileById(
+                    upload.substring(upload.indexOf("_") + 1)
+            );
+            model.addAttribute("file", upload);
+            model.addAttribute("Message", upload);
+            return "/loadedFile";
         }
         model.addAttribute("Message", "File loaded unsuccessfully, wrong id");
         return "/loadedFile";

@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title><@spring.message 'profile.page.title'/></title>
-    <style>
-        a {
-            color: red;
-        }
-        div, input, form {
-            margin: 20px;
-        }
-    </style>
+    <link rel="stylesheet"
+          href="<@spring.url '/css/cssFile.css'/>"
+          type="text/css"
+          media="screen"/>
 </head>
 <html>
 <body>
@@ -19,6 +15,10 @@
 <form method="get" action="/chillPlaces">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="ChillPlaces">
+</form>
+<form action="/addChillPlace/insertIntoDataBaseNewChillPlace" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="Go to creat or add chillPlace">
 </form>
 <form method="get" action="/accounts">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

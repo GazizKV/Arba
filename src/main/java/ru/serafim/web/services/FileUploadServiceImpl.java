@@ -11,6 +11,7 @@ package ru.serafim.web.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import ru.serafim.web.dto.FileMetaDataDto;
 import ru.serafim.web.models.ChillPlace;
 import ru.serafim.web.models.FilesMetaData;
 import ru.serafim.web.repositories.ChillPlaceRepository;
@@ -62,15 +63,20 @@ public class FileUploadServiceImpl implements FileUploadService {
                     .storageFileName(UUID.randomUUID().toString())
                     .description(description)
                     .build();
-            filesMetaDataRepository.save(filesMetaData);
+            FilesMetaData save = filesMetaDataRepository.save(filesMetaData);
             try {
                 Files.copy(file.getInputStream(), STORAGE_PATH.resolve(filesMetaData.getStorageFileName()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return "Loaded successfully";
+            return "Loaded successfully_" + save.getId();
         } else {
-            return "Can not load because id is wrong";
+            return "Can not load because chillPlace with this id is wrong";
         }
+    }
+
+    @Override
+    public FileMetaDataDto getFileById(String substring) {
+        return FileMetaDataDto.from(filesMetaDataRepository.getById(Long.valueOf(substring)));
     }
 }

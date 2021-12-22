@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.serafim.web.dto.ChillPlaceDto;
-import ru.serafim.web.dto.ContactDto;
 import ru.serafim.web.services.ChillPlacesService;
 
 @RequiredArgsConstructor
@@ -25,10 +24,8 @@ public class AddChillPlace {
 
     @GetMapping
     public String getAddChillPlace(Model model) {
-        ContactDto contactDto = new ContactDto();
         model.addAttribute("uploadMessage", "Nothing loaded");
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
-        model.addAttribute("contactDto", contactDto);
         return "/addChillPlace";
     }
 

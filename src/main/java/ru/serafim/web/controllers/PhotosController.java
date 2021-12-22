@@ -58,4 +58,5 @@ public class PhotosController {
         return "photo";
     }
 
+    //  TODO Тут надо все переделать так что бы все работало)) а то совсем ни чего не работает
 }

@@ -1,6 +1,7 @@
 package ru.serafim.web.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import ru.serafim.web.dto.AccountDto;
 import ru.serafim.web.models.Account;
 
 import java.util.List;
