@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static ru.serafim.web.dto.AccountDto.from;
-import static ru.serafim.web.dto.ContactDto.from;
 
 @Builder
 @Data
@@ -20,7 +19,6 @@ public class ChillPlaceDto {
     private Long id;
     private String name;
     private Integer serviceRate;
-    private List<ContactDto> contactDtoList;
     private AccountDto accountDto;
     private String description;
 

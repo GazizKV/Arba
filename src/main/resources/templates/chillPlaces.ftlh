@@ -18,10 +18,6 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="Profile">
 </form>
-<form action="/addChillPlace/insertIntoDataBaseNewChillPlace" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="submit" value="Go to creat or add chillPlace">
-</form>
 <hr>
 <form action="/chillPlaces/search" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

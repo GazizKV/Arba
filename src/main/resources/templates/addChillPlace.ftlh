@@ -11,9 +11,9 @@
 <html>
 <body>
 <h1>Add rest place</h1>
-<form method="get" action="/chillPlaces">
+<form method="get" action="/profile">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="submit" value="Back to search page">
+    <input type="submit" value="Back to profile page">
 </form>
 <form action="/addChillPlace/insertIntoDataBaseNewChillPlace" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

@@ -8,7 +8,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 @Builder
 @Entity
 @AllArgsConstructor
@@ -37,7 +36,6 @@ public class ChillPlace {
     @OneToMany(mappedBy = "chill_place", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<FilesMetaData> filesMetaDataList;
-
 
     // TODO Надо переместить добавление мест отдыха через Profile
 }
