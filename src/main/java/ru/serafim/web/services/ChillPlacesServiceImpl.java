@@ -48,6 +48,8 @@ public class ChillPlacesServiceImpl implements ChillPlacesService {
                 .name(chillPlaceDto.getName())
                 .serviceRate(chillPlaceDto.getServiceRate())
                 .description(chillPlaceDto.getDescription())
+                .address(chillPlaceDto.getAddress())
+                .phone(chillPlaceDto.getPhone())
                 .build();
         ChillPlace save = chillPlaceRepository.save(chillPlace);
         if(save.equals(null)) {

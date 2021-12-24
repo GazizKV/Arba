@@ -19,6 +19,8 @@ public class ChillPlaceDto {
     private Long id;
     private String name;
     private Integer serviceRate;
+    private String address;
+    private String phone;
     private AccountDto accountDto;
     private String description;
 
@@ -28,6 +30,8 @@ public class ChillPlaceDto {
                 .name(place.getName())
                 .serviceRate(place.getServiceRate())
                 .description(place.getDescription())
+                .address(place.getAddress())
+                .phone(place.getPhone())
                 .build();
     }
 

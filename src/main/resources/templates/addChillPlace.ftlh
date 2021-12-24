@@ -21,8 +21,11 @@
     <@spring.formInput "chillPlaceDto.name" "placeholder='place name'"/><br/>
     <label for="description">Enter description of chill place:</label>
     <@spring.formInput "chillPlaceDto.description" "placeholder='place description'"/><br/>
-    <input type="hidden" name="accountDto" value="">
-    <input type="submit" value="Add chilPlace">
+    <label for="address">Address</label>
+    <@spring.formInput "chillPlaceDto.address" "placeholder='place address'"/><br/>
+    <label for="phone">Phone</label>
+    <@spring.formInput "chillPlaceDto.phone" "placeholder='place phone'"/><br/>
+    <input type="submit" value="Add chillPlace">
 </form>
 <hr>
 <div><p>File upload message: ${uploadMessage}</p></div>

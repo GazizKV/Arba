@@ -6,6 +6,7 @@ package ru.serafim.web.controllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,8 +31,9 @@ public class AddChillPlace {
     }
 
     @PostMapping("/insertIntoDataBaseNewChillPlace")
-    public String insertNewChillPlace(ChillPlaceDto chillPlaceDto, Model model) {
+    public String insertNewChillPlace(ChillPlaceDto chillPlaceDto, Model model, CsrfToken token) {
         log.info("ChillPlaceDto is {}", chillPlaceDto.toString());
+        log.info("token {}", token.toString());
         chillPlaceDto.setServiceRate(5);    // set the average service rate
         String save = chillPlacesService.save(chillPlaceDto);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
