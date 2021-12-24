@@ -21,6 +21,7 @@
     <@spring.formInput "chillPlaceDto.name" "placeholder='place name'"/><br/>
     <label for="description">Enter description of chill place:</label>
     <@spring.formInput "chillPlaceDto.description" "placeholder='place description'"/><br/>
+    <input type="hidden" name="accountDto" value="">
     <input type="submit" value="Add chilPlace">
 </form>
 <hr>

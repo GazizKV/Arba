@@ -16,7 +16,7 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="ChillPlaces">
 </form>
-<form action="/addChillPlace/insertIntoDataBaseNewChillPlace" method="post">
+<form action="/addChillPlace" method="get">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="Go to creat or add chillPlace">
 </form>
