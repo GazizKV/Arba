@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.serafim.web.dto.ChillPlaceDto;
 import ru.serafim.web.models.ChillPlace;
+import ru.serafim.web.repositories.AccountsRepository;
 import ru.serafim.web.repositories.ChillPlaceRepository;
 
 import java.util.List;
@@ -17,6 +18,9 @@ import static ru.serafim.web.dto.ChillPlaceDto.from;
 public class ChillPlacesServiceImpl implements ChillPlacesService {
 
     private final ChillPlaceRepository chillPlaceRepository;
+
+    private final AccountsRepository accountsRepository;
+
     @Override
     public List<ChillPlaceDto> getAllRestPlases() {
         return from(chillPlaceRepository.findAll());
@@ -50,12 +54,13 @@ public class ChillPlacesServiceImpl implements ChillPlacesService {
                 .description(chillPlaceDto.getDescription())
                 .address(chillPlaceDto.getAddress())
                 .phone(chillPlaceDto.getPhone())
+                .account(accountsRepository.getById(chillPlaceDto.getAccountId()))
                 .build();
         ChillPlace save = chillPlaceRepository.save(chillPlace);
         if(save.equals(null)) {
             return "File not saved, try again";
         }
-        return "Loaded successfully";
+        return "Saved successfully";
     }
 
     @Override

@@ -50,4 +50,8 @@ public class AccountUserDetails implements UserDetails {
     public boolean isEnabled() {
         return account.getState().equals(Account.State.CONFIRMED);
     }
+
+    public Account getAccount() {
+        return account;
+    }
 }

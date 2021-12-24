@@ -6,6 +6,8 @@ package ru.serafim.web.controllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.serafim.web.dto.ChillPlaceDto;
+import ru.serafim.web.models.Account;
+import ru.serafim.web.security.details.AccountUserDetails;
 import ru.serafim.web.services.ChillPlacesService;
 
 @RequiredArgsConstructor
@@ -31,10 +35,15 @@ public class AddChillPlace {
     }
 
     @PostMapping("/insertIntoDataBaseNewChillPlace")
-    public String insertNewChillPlace(ChillPlaceDto chillPlaceDto, Model model, CsrfToken token) {
+    public String insertNewChillPlace(ChillPlaceDto chillPlaceDto, Model model,
+                                      CsrfToken token, Authentication authentication) {
         log.info("ChillPlaceDto is {}", chillPlaceDto.toString());
         log.info("token {}", token.toString());
+        log.info("authentication", authentication);
         chillPlaceDto.setServiceRate(5);    // set the average service rate
+        AccountUserDetails accountUserDetails = (AccountUserDetails) authentication.getPrincipal();
+        Account account = accountUserDetails.getAccount();
+        chillPlaceDto.setAccountId(account.getId());
         String save = chillPlacesService.save(chillPlaceDto);
         model.addAttribute("chillPlaceDto", new ChillPlaceDto());
         model.addAttribute("uploadMessage", save);
@@ -42,4 +51,6 @@ public class AddChillPlace {
     }
 
     // TODO Add to chillPlaceDTO fields for contact and phones
+
+    // TODO Надо настроить аутентификацию на страницах поиска и добавления что бы добавляли только авторизованные пользователи.
 }

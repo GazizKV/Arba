@@ -21,7 +21,7 @@ public class ChillPlaceDto {
     private Integer serviceRate;
     private String address;
     private String phone;
-    private AccountDto accountDto;
+    private Long accountId;
     private String description;
 
     public static ChillPlaceDto from(ChillPlace place) {
@@ -30,6 +30,7 @@ public class ChillPlaceDto {
                 .name(place.getName())
                 .serviceRate(place.getServiceRate())
                 .description(place.getDescription())
+                .accountId(place.getAccount().getId())
                 .address(place.getAddress())
                 .phone(place.getPhone())
                 .build();
