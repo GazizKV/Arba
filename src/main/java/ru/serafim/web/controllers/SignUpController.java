@@ -1,6 +1,7 @@
 package ru.serafim.web.controllers;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/signUp")
+@Slf4j
 public class SignUpController {
 
     private final SignUpService signUpService;

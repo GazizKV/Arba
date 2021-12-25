@@ -6,7 +6,7 @@
     <link rel="stylesheet"
           type="text/css"
           href="<@spring.url '/css/cssFile.css'/>"/>
-    </style>
+    <script src="/javaScript/javascript.js"></script>
 </head>
 <body>
 <table id="accounts_table">

@@ -7,6 +7,7 @@
           href="<@spring.url '/css/cssFile.css'/>"
           type="text/css"
           media="screen"/>
+    <script src="/javaScript/javascript.js"></script>
 </head>
 <html>
 <body>
@@ -24,6 +25,6 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="Accounts only for ADMIN">
 </form>
-<h2><a href="/logout" >Log Out</a></h2>
+<h2><a href="/logout">Log Out</a></h2>
 </body>
 </html>

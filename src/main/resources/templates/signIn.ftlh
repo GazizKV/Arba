@@ -7,6 +7,7 @@
           href="<@spring.url '/css/cssFile.css'/>"
           type="text/css"
           media="screen"/>
+    <script src="/javaScript/javascript.js"></script>
 </head>
 <html>
 <body>

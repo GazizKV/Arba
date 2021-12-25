@@ -6,7 +6,7 @@
     <link rel="stylesheet"
           type="text/css"
           href="<@spring.url '/css/cssFile.css'/>"/>
-    </style>
+    <script src="/javaScript/javascript.js"></script>
 </head>
 <html>
 <body>
@@ -40,7 +40,11 @@
     <@spring.showErrors "<br>" "error"/>
     <br>
     <br>
-    <input type="submit" value="Sign Up">
+    <input type="submit" value="Sign Up"><br>
+</form>
+<form method="get" action="/signIn">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="Go to sign in page">
 </form>
 </body>
 </html>
