@@ -1,0 +1,19 @@
+package ru.serafim.web.models;
+
+//  author:  ValitovGaziz
+//  date:    25.12.2021
+//  project: serafim
+
+import lombok.*;
+
+import javax.persistence.Entity;
+
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public enum TypeOfRest {
+    MONUMENT, PARK, FOUNTAIN, FAMOUS_BUILDING, THEATRE, MUSEUM, RELIGIOUS_STRUCTURES
+
+    // TODO добавить все эти типы отды в класс аккаунт вместе с репозиторием для иконок, сервисом для добавления и страницей для добавления?
+
+}

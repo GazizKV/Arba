@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -36,5 +37,11 @@ public class ChillPlace {
     @OneToMany(mappedBy = "chill_place", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<FilesMetaData> filesMetaDataList;
+
+    // TODO установить отношения между TypeOfRest and ChillPlace many to one.
+
+    @OneToMany(mappedBy = "chillPlace", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private Set<Badge> badges;
 
 }
