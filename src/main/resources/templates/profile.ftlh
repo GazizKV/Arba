@@ -24,10 +24,6 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="Accounts only for ADMIN">
 </form>
-<form method="get" action="/fileUpload">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="submit" value="Upload file">
-</form>
 <h2><a href="/logout" >Log Out</a></h2>
 </body>
 </html>

@@ -69,7 +69,7 @@ public class FileUploadServiceImpl implements FileUploadService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return "Loaded successfully_" + save.getId();
+            return "Loaded successfully";
         } else {
             return "Can not load because chillPlace with this id is wrong";
         }

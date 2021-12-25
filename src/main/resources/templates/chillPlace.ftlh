@@ -22,7 +22,7 @@
     <input type="submit" value="Back">
 </form>
 <h5>Load photo</h5>
-<form method="post" action="/fileUpload/profile/${place.id}" enctype="multipart/form-data">
+<form method="post" action="/chillPlace/upLoadPhoto/${place.id}" enctype="multipart/form-data">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <label for="file">Выберете 1 файл для загрузки</label><br>
     <input type="file" name="file"><br>
