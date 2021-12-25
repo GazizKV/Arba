@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.serafim.web.dto.ChillPlaceDto;
 import ru.serafim.web.models.ChillPlace;
+import ru.serafim.web.models.FilesMetaData;
 import ru.serafim.web.repositories.AccountsRepository;
 import ru.serafim.web.repositories.ChillPlaceRepository;
 
@@ -66,5 +67,11 @@ public class ChillPlacesServiceImpl implements ChillPlacesService {
     @Override
     public void deleteById(Long id) {
         chillPlaceRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<List<ChillPlaceDto>> getChillPlaceByAccountId(Long id) {
+        Optional<List<ChillPlace>> allByAccount_id = chillPlaceRepository.findAllByAccount_Id(id);
+        return Optional.ofNullable(from(allByAccount_id.get()));
     }
 }

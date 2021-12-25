@@ -22,8 +22,6 @@ public class ChillPlacesController {
 
     private final ChillPlacesService chillPlacesService;
 
-    private final FileUploadService fileUploadService;
-
     @GetMapping
     public String getRests(Model model) {
         List<ChillPlaceDto> allRestPlaces = chillPlacesService.getAllRestPlases();

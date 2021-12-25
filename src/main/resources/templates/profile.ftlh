@@ -13,6 +13,7 @@
 <body>
 <h1><@spring.message 'profile.page.header'/></h1>
 <h2><@spring.message 'profile.page.description'/></h2>
+<div><p></p></div>
 <form method="get" action="/chillPlaces">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="ChillPlaces">

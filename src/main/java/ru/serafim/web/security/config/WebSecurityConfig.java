@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").authenticated()
                 .antMatchers("/profile").authenticated()
                 .antMatchers("/accounts/**").hasAuthority("ADMIN")
-                .antMatchers("/chillPlaces/**").authenticated()
+                .antMatchers("/places/**").authenticated()
                 .antMatchers("chillPlace").authenticated()
                 .antMatchers("/fileUpload").authenticated()
                 .antMatchers("/loadedFile").permitAll()
