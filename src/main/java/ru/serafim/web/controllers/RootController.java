@@ -25,14 +25,18 @@ public class RootController {
 
     @GetMapping
     public String getRootPage(Authentication authentication, Model model) {
-        Account account = ((AccountUserDetails) authentication.getPrincipal()).getAccount();
-        Optional<List<ChillPlaceDto>> placeByAccountId = chillPlacesService.getChillPlaceByAccountId(account.getId());
-        model.addAttribute("places", new ArrayList<ChillPlace>());
-        if (placeByAccountId.isPresent() && (placeByAccountId.get().size() > 0)) {
-            List<ChillPlaceDto> chillPlaces = placeByAccountId.get();
-            model.addAttribute("places", chillPlaces);
+        if(authentication.isAuthenticated()) {
+            Account account = ((AccountUserDetails) authentication.getPrincipal()).getAccount();
+            Optional<List<ChillPlaceDto>> placeByAccountId = chillPlacesService.getChillPlaceByAccountId(account.getId());
+            model.addAttribute("places", new ArrayList<ChillPlace>());
+            if (placeByAccountId.isPresent() && (placeByAccountId.get().size() > 0)) {
+                List<ChillPlaceDto> chillPlaces = placeByAccountId.get();
+                model.addAttribute("places", chillPlaces);
+            }
+            model.addAttribute("account", account);
+            return "/profile";
+        } else {
+            return "/chillPlaces";
         }
-        model.addAttribute("account", account);
-        return "/profile";
     }
 }

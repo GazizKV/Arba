@@ -23,7 +23,7 @@
 <form action="/chillPlaces/search" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <label for="Title searcher">Search by title</label>
-    <input type="text" name="searchString">
+    <input type="text" name="searchString" value="">
     <input type="submit">
 </form>
 <#list chillPlaces as chillPlace>
