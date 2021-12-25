@@ -27,7 +27,7 @@ public class ProfileController {
 
     @RequestMapping()
     public String getProfilePage(Model model, Authentication authentication) {
-        Account account = ((AccountUserDetails) authentication.getDetails()).getAccount();
+        Account account = ((AccountUserDetails) authentication.getPrincipal()).getAccount();
         Optional<List<ChillPlaceDto>> placeByAccountId = chillPlacesService.getChillPlaceByAccountId(account.getId());
         model.addAttribute("places", new ArrayList<ChillPlace>());
         if (placeByAccountId.isPresent() && (placeByAccountId.get().size() > 0)) {
