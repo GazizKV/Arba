@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title><@spring.message 'signUp.page.title'/></title>
-    <style>
-        .error {
-            color: red;
-        }
-        label, input {
-            margin: 10px;
-        }
+    <link rel="stylesheet"
+          type="text/css"
+          href="<@spring.url '/css/cssFile.css'/>"/>
     </style>
 </head>
 <html>

@@ -6,7 +6,6 @@
     <link rel="stylesheet"
           type="text/css"
           href="<@spring.url '/css/cssFile.css'/>"/>
-
     </style>
 </head>
 <body>
