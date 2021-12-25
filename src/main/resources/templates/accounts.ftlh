@@ -34,13 +34,9 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="Chill places">
 </form>
-<form method="get" action="/accounts">
+<form method="get" action="/profile">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="submit" value="Accounts only for ADMIN">
-</form>
-<form method="get" action="/fileUpload">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="submit" value="Upload file">
+    <input type="submit" value="Back to profile">
 </form>
 </body>
 </html>
