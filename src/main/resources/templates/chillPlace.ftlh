@@ -22,11 +22,13 @@
     <input type="submit" value="Back">
 </form>
 <h5>Load photo</h5>
-<form action="/chillPlace/upLoadPhoto/${place.id}" method="post" enctype="multipart/form-data">
+<form method="post" action="/fileUpload/profile/${place.id}" enctype="multipart/form-data">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="text" name="description" placeholder="Photo description"/><br>
+    <label for="file">Выберете 1 файл для загрузки</label><br>
     <input type="file" name="file"><br>
-    <input type="submit" value="Photo Upload">
+    <label for="description">Введите описание фото</label><br>
+    <input type="text" name="description" placeholder="description"/><br>
+    <input type="submit" value="File Upload">
 </form>
 <hr>
 <div><p>File upload message: ${uploadMessage}</p></div>

@@ -50,7 +50,5 @@ public class AddChillPlace {
         return "/addChillPlace";
     }
 
-    // TODO Add to chillPlaceDTO fields for contact and phones
 
-    // TODO Надо настроить аутентификацию на страницах поиска и добавления что бы добавляли только авторизованные пользователи.
 }

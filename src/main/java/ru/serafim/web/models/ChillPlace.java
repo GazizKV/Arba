@@ -37,5 +37,4 @@ public class ChillPlace {
     @ToString.Exclude
     private List<FilesMetaData> filesMetaDataList;
 
-    // TODO Надо переместить добавление мест отдыха через Profile
 }

@@ -10,10 +10,7 @@ package ru.serafim.web.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.serafim.web.dto.FileMetaDataDto;
 import ru.serafim.web.services.AccountService;
@@ -33,10 +30,11 @@ public class FileUploadController {
         return "/fileUpload";
     }
 
-    @PostMapping
+    @PostMapping("/profile/{place_id}")
     public String fileUpload(@RequestParam("file") MultipartFile file,
                              @RequestParam("description") String description,
-                             Long id, Model model) {
+                             @PathVariable("place_id") Long id,
+                             Model model) {
         if(accountService.getAccountById(id).isPresent()) {
             String upload = fileUploadService.upload(file, description, id);
             FileMetaDataDto fileMetaDataDto = fileUploadService.getFileById(
@@ -47,8 +45,8 @@ public class FileUploadController {
             return "/loadedFile";
         }
         model.addAttribute("Message", "File loaded unsuccessfully, wrong id");
-        return "/loadedFile";
+        return "/chillPlace";
     }
 
-    // TODO Insert to file upload construction Account id
+    // TODO Insert to file upload construction ChillPlace id
 }
