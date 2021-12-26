@@ -24,7 +24,7 @@
 </form>
 <form method="get" action="/accounts">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="submit" value="Accounts only for ADMIN">
+    <input id="adminAccountEdit" type="submit" value="Accounts only for ADMIN">
 </form>
 <h2><a href="/logout">Log Out</a></h2>
 <#list places as place>
