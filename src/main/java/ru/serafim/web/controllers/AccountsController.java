@@ -23,7 +23,7 @@ public class AccountsController {
 
     @GetMapping
     public String getAccountsPage(Model model) {
-        List<AccountDto> allAccounts = accountService.getAllAccounts();
+        List<AccountDto> allAccounts = accountService.findAllAccounts();
         model.addAttribute("accounts", allAccounts);
         return "/accounts";
     }

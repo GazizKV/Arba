@@ -19,9 +19,11 @@ public class AccountServiceImpl implements AccountService {
     private final AccountsRepository accountsRepository;
 
     @Override
-    public List<AccountDto> getAllAccounts() {
+    public List<AccountDto> getAllAccountsWithoutDeleted() {
         return from(accountsRepository.findAllByStateNot(State.DELETED));
     }
+
+
 
     @Override
     public void delete(Long accountId) {
@@ -33,5 +35,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Optional<Account> getAccountById(Long id) {
         return accountsRepository.findById(id);
+    }
+
+    @Override
+    public List<AccountDto> findAllAccounts() {
+        return from(accountsRepository.findAll());
     }
 }

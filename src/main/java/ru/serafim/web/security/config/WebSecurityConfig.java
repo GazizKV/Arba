@@ -53,6 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/loadedFile").permitAll()
                 .antMatchers("/addChillPlace").authenticated()
                 .antMatchers("/fileUpload").authenticated()
+                .antMatchers("/editPlace/**").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/signIn")

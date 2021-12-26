@@ -45,7 +45,7 @@ public class EditPlaceController {
         ChillPlaceDto chillPlaceDto = chillPlacesService.getChillPlaceById(id);
         model.addAttribute("place", chillPlaceDto);
         model.addAttribute("uploadMessage", upload);
-        return "/chillPlace";
+        return "/editPlace";
     }
 
     @PostMapping("/delete/{chillPlace_id}")

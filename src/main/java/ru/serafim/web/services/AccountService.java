@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AccountService {
-    List<AccountDto> getAllAccounts();
+    List<AccountDto> getAllAccountsWithoutDeleted();
 
     void delete(Long accountId);
 
     Optional<Account> getAccountById(Long id);
+
+    List<AccountDto> findAllAccounts();
 }

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.serafim.web.models.Account;
+import ru.serafim.web.models.State;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +20,8 @@ public class AccountDto {
     private String firstName;
     private String lastName;
     private String email;
+    private State state;
+    private Account.Role role;
 
     public static AccountDto from(Account account) {
         if(account == null) return null;
@@ -27,6 +30,8 @@ public class AccountDto {
                 .firstName(account.getFirstName())
                 .lastName(account.getLastName())
                 .email(account.getEmail())
+                .state(account.getState())
+                .role(account.getRole())
                 .build();
     }
 

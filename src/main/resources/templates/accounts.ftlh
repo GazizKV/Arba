@@ -32,6 +32,8 @@
             <td>${account.firstName}</td>
             <td>${account.lastName}</td>
             <td>${account.email}</td>
+            <td>${account.role}</td>
+            <td>${account.state}</td>
         </tr>
     </#list>
 </table>

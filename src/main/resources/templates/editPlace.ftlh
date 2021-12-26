@@ -18,14 +18,14 @@
 <p>phone: ${place.phone}</p>
 <p>state: ${place.state}</p>
 <#list place.listPhotoId as photo>
-    <p>${photo}</p>
+    <p>That is photo with id = ${photo}</p>
 </#list>
 <form method="get" action="/profile">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="Back to profile">
 </form>
 <h5>Load photo</h5>
-<form method="post" action="/chillPlace/upLoadPhoto/${place.id}" enctype="multipart/form-data">
+<form method="post" action="/editPlace/upLoadPhoto/${place.id}" enctype="multipart/form-data">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <label for="file">Выберете фото для загрузки</label><br>
     <input type="file" name="file"><br>
