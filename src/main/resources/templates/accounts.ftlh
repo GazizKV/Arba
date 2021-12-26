@@ -9,6 +9,10 @@
     <script src="/javaScript/javascript.js"></script>
 </head>
 <body>
+<form method="get" action="/profile">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <input type="submit" value="Back to profile">
+</form>
 <table id="accounts_table">
     <tr>
         <th>Action</th>
@@ -27,16 +31,9 @@
             <td>${account.id}</td>
             <td>${account.firstName}</td>
             <td>${account.lastName}</td>
+            <td>${account.email}</td>
         </tr>
     </#list>
 </table>
-<form method="get" action="/chillPlaces">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="submit" value="Chill places">
-</form>
-<form method="get" action="/profile">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="submit" value="Back to profile">
-</form>
 </body>
 </html>

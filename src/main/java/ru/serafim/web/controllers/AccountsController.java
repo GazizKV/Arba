@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.serafim.web.dto.AccountDto;
 import ru.serafim.web.services.AccountService;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -20,8 +23,8 @@ public class AccountsController {
 
     @GetMapping
     public String getAccountsPage(Model model) {
-        log.info("getMappint {}", model.toString());
-        model.addAttribute("accounts", accountService.getAllAccounts());
+        List<AccountDto> allAccounts = accountService.getAllAccounts();
+        model.addAttribute("accounts", allAccounts);
         return "/accounts";
     }
 
