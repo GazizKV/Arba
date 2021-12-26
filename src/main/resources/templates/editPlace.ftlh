@@ -16,6 +16,10 @@
 <p>${place.description}</p>
 <p>address: ${place.address}</p>
 <p>phone: ${place.phone}</p>
+<p>state: ${place.state}</p>
+<#list place.listPhotoId as photo>
+    <p>${photo}</p>
+</#list>
 <form method="get" action="/profile">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="Back to profile">

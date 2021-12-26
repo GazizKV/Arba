@@ -37,6 +37,11 @@
             </form>
             <p>${chillPlace.description}</p>
         </div>
+        <div id="chillPlaceComponent_badges">
+            <#list chillPlace.badgeSet as badge>
+                <p>${badge.name}</p>
+            </#list>
+        </div>
         <div id="chillPlaceComponent_contact"><p>${chillPlace.phone}</p><p>${chillPlace.address}</p></div>
     </div>
 </#list>

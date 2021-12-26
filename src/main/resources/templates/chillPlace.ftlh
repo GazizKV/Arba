@@ -14,10 +14,15 @@
 <h1>${place.name}</h1>
 <h2>Description of chill place</h2>
 <p>${place.description}</p>
-<div>
+<div id="photos">
     <p>Photos</p>
     <#list place.listPhotoId as id>
         <p><b>${id}</b></p>
+    </#list>
+</div>
+<div id="badges">
+    <#list place.badgeSet as badge>
+        <p>${badge.name}</p>
     </#list>
 </div>
 <p>address: ${place.address}</p>

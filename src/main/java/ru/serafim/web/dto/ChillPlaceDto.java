@@ -1,10 +1,13 @@
 package ru.serafim.web.dto;
 
 import lombok.*;
+import ru.serafim.web.models.Badge;
 import ru.serafim.web.models.ChillPlace;
 import ru.serafim.web.models.FilesMetaData;
+import ru.serafim.web.models.State;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static ru.serafim.web.dto.AccountDto.from;
@@ -24,6 +27,8 @@ public class ChillPlaceDto {
     private Long accountId;
     private String description;
     private List<Long> listPhotoId;
+    private State state;
+    private Set<Badge> badgeSet;
 
     public static ChillPlaceDto from(ChillPlace place) {
         return ChillPlaceDto.builder()
@@ -34,7 +39,9 @@ public class ChillPlaceDto {
                 .accountId(place.getAccount().getId())
                 .address(place.getAddress())
                 .phone(place.getPhone())
+                .state(place.getState())
                 .listPhotoId(place.getFilesMetaDataList().stream().map(FilesMetaData::getId).toList())
+                .badgeSet(place.getBadges())
                 .build();
     }
 
