@@ -37,7 +37,7 @@
             </form>
             <p>${chillPlace.description}</p>
         </div>
-        <div id="chillPlaceComponent_contact"><p>Contact</p></div>
+        <div id="chillPlaceComponent_contact"><p>${chillPlace.phone}</p><p>${chillPlace.address}</p></div>
     </div>
 </#list>
 </body>
