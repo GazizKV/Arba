@@ -26,13 +26,13 @@ public class FilesMetaData {
     @Column(name = "storage_file_name")
     private String storageFileName;
 
-    private Long size;
+    private Long size;  // TODO написать валидатор для размера сохраняемых файлов.
 
     @Column(name = "content_type")
     private String contentType;
 
     @Column(name = "original_file_name")
-    private String originalFileName;
+    private String originalFileName;    // TODO написать валидатор для имени сохраняемых фалов
 
     @ManyToOne
     @JoinColumn(name = "chill_place_id")

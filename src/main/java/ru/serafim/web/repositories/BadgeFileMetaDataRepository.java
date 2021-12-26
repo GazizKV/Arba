@@ -7,5 +7,5 @@ package ru.serafim.web.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.serafim.web.models.Badge;
 
-public interface BadgeFileMetaData extends JpaRepository<Badge, Long> {
+public interface BadgeFileMetaDataRepository extends JpaRepository<Badge, Long> {
 }

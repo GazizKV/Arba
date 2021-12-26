@@ -8,9 +8,6 @@ import lombok.*;
 
 import javax.persistence.Entity;
 
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
 public enum TypeOfRest {
     MONUMENT, PARK, FOUNTAIN, FAMOUS_BUILDING, THEATRE, MUSEUM, RELIGIOUS_STRUCTURES
 
