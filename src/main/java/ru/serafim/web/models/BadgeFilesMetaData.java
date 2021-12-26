@@ -1,11 +1,8 @@
 package ru.serafim.web.models;
 
-// Created by IntelliJ IDEA.
-// User: valit
-// Date: 14.11.2021
-// Time: 9:47
-// Project name: serafim
-// To change this template use File | Settings | File Templates.
+//  author:  ValitovGaziz
+//  date:    26.12.2021
+//  project: serafim
 
 import lombok.*;
 
@@ -18,9 +15,9 @@ import javax.persistence.*;
 @Data
 @Getter
 @Setter
-public class FilesMetaData {
+public class BadgeFilesMetaData {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "storage_file_name")
@@ -35,10 +32,11 @@ public class FilesMetaData {
     private String originalFileName;
 
     @ManyToOne
-    @JoinColumn(name = "chill_place_id")
-    private ChillPlace chill_place;
+    @JoinColumn(name = "badge_id")
+    private Badge badge;
 
     @Column(length = 1000)
     private String description;
+
 
 }
