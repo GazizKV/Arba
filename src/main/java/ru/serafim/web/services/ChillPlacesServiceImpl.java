@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.serafim.web.dto.ChillPlaceDto;
 import ru.serafim.web.models.ChillPlace;
-import ru.serafim.web.models.FilesMetaData;
+import ru.serafim.web.models.State;
 import ru.serafim.web.repositories.AccountsRepository;
 import ru.serafim.web.repositories.ChillPlaceRepository;
 
@@ -65,8 +65,16 @@ public class ChillPlacesServiceImpl implements ChillPlacesService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        chillPlaceRepository.deleteById(id);
+    public String deleteById(Long id) {
+        Optional<ChillPlace> optChillPlace = chillPlaceRepository.findById(id);
+        if(optChillPlace.isPresent()) {
+            ChillPlace chillPlace = optChillPlace.get();
+            chillPlace.setState(State.DELETED);
+            chillPlaceRepository.save(chillPlace);
+            return "deleted";
+        }
+        return "Not deleted because chillPlace by this id was not found. Your can send save appeal to this " +
+                "emal or call by phone written into footer of this site";
     }
 
     @Override

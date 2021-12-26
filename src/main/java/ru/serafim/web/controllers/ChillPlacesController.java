@@ -41,14 +41,4 @@ public class ChillPlacesController {
         return "/chillPlaces";
     }
 
-
-    @PostMapping("/{chillPlace_id}/delete")
-    public String deletePlace(@PathVariable("chillPlace_id") Long id, Model model) {
-        chillPlacesService.deleteById(id);
-        List<ChillPlaceDto> allRestPlaces = chillPlacesService.getAllRestPlases();
-        model.addAttribute("chillPlaces", allRestPlaces);
-        return "/chillPlaces";
-    }
-
-
 }

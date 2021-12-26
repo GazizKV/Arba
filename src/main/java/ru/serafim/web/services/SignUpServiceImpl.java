@@ -5,6 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.serafim.web.dto.SignUpForm;
 import ru.serafim.web.models.Account;
+import ru.serafim.web.models.State;
 import ru.serafim.web.repositories.AccountsRepository;
 
 import java.util.Locale;
@@ -23,7 +24,7 @@ public class SignUpServiceImpl implements SignUpService {
                 .lastName(form.getLastName())
                 .email(form.getEmail().toLowerCase(Locale.ROOT))
                 .role(Account.Role.USER)
-                .state(Account.State.NOT_CONFIRMED)
+                .state(State.NOT_CONFIRMED)
                 .password(passwordEncoder.encode(form.getPassword()))
                 .build();
 

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.serafim.web.dto.AccountDto;
 import ru.serafim.web.models.Account;
+import ru.serafim.web.models.State;
 import ru.serafim.web.repositories.AccountsRepository;
 
 import java.util.List;
@@ -19,13 +20,13 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<AccountDto> getAllAccounts() {
-        return from(accountsRepository.findAllByStateNot(Account.State.DELETED));
+        return from(accountsRepository.findAllByStateNot(State.DELETED));
     }
 
     @Override
     public void delete(Long accountId) {
         Account account = accountsRepository.getById(accountId);
-        account.setState(Account.State.DELETED);
+        account.setState(State.DELETED);
         accountsRepository.save(account);
     }
 

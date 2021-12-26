@@ -23,6 +23,7 @@ public class ChillPlaceDto {
     private String phone;
     private Long accountId;
     private String description;
+    private List<Long> listPhotoId;
 
     public static ChillPlaceDto from(ChillPlace place) {
         return ChillPlaceDto.builder()
@@ -33,6 +34,7 @@ public class ChillPlaceDto {
                 .accountId(place.getAccount().getId())
                 .address(place.getAddress())
                 .phone(place.getPhone())
+                .listPhotoId(place.getFilesMetaDataList().stream().map(FilesMetaData::getId).toList())
                 .build();
     }
 

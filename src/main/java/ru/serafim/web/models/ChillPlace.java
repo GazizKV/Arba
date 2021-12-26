@@ -27,6 +27,9 @@ public class ChillPlace {
 
     private String address;
 
+    @Enumerated(value = EnumType.STRING)
+    private State state;
+
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
@@ -37,8 +40,6 @@ public class ChillPlace {
     @OneToMany(mappedBy = "chill_place", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<FilesMetaData> filesMetaDataList;
-
-    // TODO установить отношения между TypeOfRest and ChillPlace many to one.
 
     @OneToMany(mappedBy = "chillPlace", cascade = CascadeType.ALL)
     @ToString.Exclude

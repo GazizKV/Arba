@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.serafim.web.models.Account;
+import ru.serafim.web.models.State;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -38,7 +39,7 @@ public class AccountUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !account.getState().equals(Account.State.BANNED);
+        return !account.getState().equals(State.BANNED);
     }
 
     @Override
@@ -48,7 +49,7 @@ public class AccountUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return account.getState().equals(Account.State.CONFIRMED);
+        return account.getState().equals(State.CONFIRMED);
     }
 
     public Account getAccount() {

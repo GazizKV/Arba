@@ -20,10 +20,6 @@ public class Account {
         USER, ADMIN
     }
 
-    public enum State {
-        NOT_CONFIRMED, CONFIRMED, DELETED, BANNED
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

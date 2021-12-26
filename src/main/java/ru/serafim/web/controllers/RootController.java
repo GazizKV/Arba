@@ -39,4 +39,6 @@ public class RootController {
             return "/chillPlaces";
         }
     }
+
+    // TODO доделать серви с состояниями при удалении и добавлении мест отдыха
 }

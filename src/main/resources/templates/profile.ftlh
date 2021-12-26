@@ -32,9 +32,9 @@
         <div id="chillPlaceComponent_photo"><img src="image" alt="photo">${place.id}</div>
         <div id="chillPlaceComponent_title_keyWords">
             <h3>${place.name}</h3>
-            <form method="post" action="/chillPlace/${place.id}/select">
+            <form method="post" action="/editPlace/get/${place.id}">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                <input type="submit" value="Select">
+                <input type="submit" value="edit">
             </form>
             <p>${place.description}</p>
         </div>
