@@ -24,15 +24,30 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="Back to profile">
 </form>
-<h5>Load photo</h5>
-<form method="post" action="/editPlace/upLoadPhoto/${place.id}" enctype="multipart/form-data">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <label for="file">Выберете фото для загрузки</label><br>
-    <input type="file" name="file"><br>
-    <label for="description">Введите описание фото</label><br>
-    <input type="text" name="description" placeholder="description"/><br>
-    <input type="submit" value="File Upload">
-</form>
+<div id="loadPhotoFileId">
+    <h4>Load photo</h4>
+    <form method="post" action="/editPlace/upLoadPhoto/${place.id}" enctype="multipart/form-data">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+        <label for="file">Выберете фото для загрузки</label><br>
+        <input type="file" name="file"><br>
+        <label for="description">Введите описание фото</label><br>
+        <input type="text" name="description" placeholder="description"/><br>
+        <input type="submit" value="File Upload">
+    </form>
+</div>
+<div id="addBadge">
+    <h4>Add badge</h4>
+    <form action="post" action="/editPlace/addBadge/${place.id}" enctype="multipart/form-data">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+        <label for="name"></label>
+        <input type="text" name="name" placeholder="краткое название"><br>
+        <label for="file">Выберете рисунок в в отдном из таких то форматов бейджа для загрузки</label><br>
+        <input type="file" name="file"><br>
+        <label for="description">Введите описание бейджа</label><br>
+        <input type="text" name="description" placeholder="description"/><br>
+        <input type="submit" value="File Upload">
+    </form>
+</div>
 <div><p>File upload message: ${uploadMessage}</p></div>
 <hr>
 <form method="post" action="/editPlace/delete/${place.id}">

@@ -25,7 +25,7 @@ public class Badge {
 
     @ManyToOne
     @JoinColumn(name = "chillPlace_id")
-    private ChillPlace chillPlace;
+    private ChillPlace chillPlace;          // TODO Переделать под связь многие ко многим
 
     @OneToMany(mappedBy = "badge")
     @ToString.Exclude
