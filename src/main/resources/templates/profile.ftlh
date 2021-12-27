@@ -22,10 +22,17 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <input type="submit" value="Go to creat or add chillPlace">
 </form>
-<form method="get" action="/accounts">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input id="adminAccountEdit" type="submit" value="Accounts only for ADMIN">
-</form>
+<#assign role=account.role>
+<div id="adminFunctions">
+    <form method="get" action="/accounts">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+        <input id="adminAccountEdit" type="submit" value="Accounts only for ADMIN">
+    </form>
+    <form method="get" action="/badges">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+        <input id="badgesAddPage" type="submit" value="Badges only for ADMIN">
+    </form>
+</div>
 <h2><a href="/logout">Log Out</a></h2>
 <#list places as place>
     <div class="chillPlaceComponentContainer">
@@ -38,7 +45,8 @@
             </form>
             <p>${place.description}</p>
         </div>
-        <div id="chillPlaceComponent_contact"><p>phone: ${place.phone}</p><br><p>address: ${place.address}</p></div>
+        <div id="chillPlaceComponent_contact"><p>phone: ${place.phone}</p><br>
+            <p>address: ${place.address}</p></div>
     </div>
 </#list>
 </body>
