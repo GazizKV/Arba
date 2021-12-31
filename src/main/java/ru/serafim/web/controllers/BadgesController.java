@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class BadgesController {
 
-
-
+    // TODO  реализовать черно белую темы и ее переход.
 
 }
