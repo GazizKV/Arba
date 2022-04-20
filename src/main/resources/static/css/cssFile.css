@@ -10,7 +10,7 @@ html {
     width: 100%;
 }
 body {
-    border: 1px solid;
+    border: 1px solid #aff;
     width: 900px;
     margin: 100px auto;
 }
@@ -64,14 +64,13 @@ body {
     margin: auto;
     width: fit-content;
     padding: 2em;
+    height: fit-content;
 }
 
-#sign_in_form form {
-    padding: 2em;
-}
-
-#sign_in_form input {
+input {
     height: 3vh;
+    border: solid 1px;
+    border-radius: 10px;
 }
 
 #sign_in_form h2 {
@@ -83,7 +82,31 @@ body {
     margin: auto;
     display: flex;
 }
-#sign_in_form input {
-    border: solid 1px;
-    border-radius: 10px;
+
+#navigation {
+    margin: 1rem;
+}
+#navigation input {
+    margin: 1vh;
+}
+
+.signUpContainer {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.signUpContainer * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    width: fit-content;
+}
+
+.signUpContainer h1, h2 {
+    margin: 1vh;
 }
