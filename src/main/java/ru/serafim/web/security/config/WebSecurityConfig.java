@@ -54,6 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/addChillPlace").authenticated()
                 .antMatchers("/fileUpload").authenticated()
                 .antMatchers("/editPlace/**").authenticated()
+                .antMatchers("/badgesPage").hasAuthority("ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/signIn")
