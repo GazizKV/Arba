@@ -15,6 +15,12 @@ body {
     margin: 100px auto;
 }
 
+input {
+    height: 3vh;
+    border: solid 1px;
+    border-radius: 10px;
+}
+
 #loadPhotoFileId {
     border: 1px solid silver;
 }
@@ -26,6 +32,8 @@ body {
     border: solid 1px;
     margin: 1vh 0 1vh 0;
     border-radius: 1vh;
+    height: 25vh;
+    overflow: hidden;
 }
 
 .chillPlaceComponentContainer * {
@@ -37,6 +45,7 @@ body {
     display: flex;
     flex-direction: row;
     width: 20%;
+    background-color: #aaffff;
 }
 
 #chillPlaceComponent_title_keyWords {
@@ -47,11 +56,20 @@ body {
 }
 
 #chillPlaceComponent_title_keyWords * {
+    margin-left: 1rem;
+}
+
+.row-box form {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    align-content: center;
 }
 
 #chillPlaceComponent_contact {
     display: flex;
+    flex-direction: column;
     width: 19%;
 }
 
@@ -67,11 +85,6 @@ body {
     height: fit-content;
 }
 
-input {
-    height: 3vh;
-    border: solid 1px;
-    border-radius: 10px;
-}
 
 #sign_in_form h2 {
     padding: 2vh 0 0 0;

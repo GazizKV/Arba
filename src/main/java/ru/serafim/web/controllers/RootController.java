@@ -25,7 +25,7 @@ public class RootController {
 
     @GetMapping
     public String getRootPage(Authentication authentication, Model model) {
-        if(authentication.isAuthenticated()) {
+        if (authentication.isAuthenticated()) {
             Account account = ((AccountUserDetails) authentication.getPrincipal()).getAccount();
             Optional<List<ChillPlaceDto>> placeByAccountId = chillPlacesService.getChillPlaceByAccountId(account.getId());
             model.addAttribute("places", new ArrayList<ChillPlace>());

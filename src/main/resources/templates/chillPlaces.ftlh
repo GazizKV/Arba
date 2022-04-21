@@ -17,24 +17,26 @@
 <hr>
 <form method="get" action="/profile">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <input type="submit" value="Profile">
+    <input type="submit" value="Профиль">
 </form>
 <hr>
 <form action="/chillPlaces/search" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <label for="Title searcher">Search by title</label>
+    <label for="Title searcher">Поиск по имени</label>
     <input type="text" name="searchString" value="">
-    <input type="submit">
+    <input type="submit" value="Искать">
 </form>
 <#list chillPlaces as chillPlace>
     <div class="chillPlaceComponentContainer">
         <div id="chillPlaceComponent_photo"><img src="image" alt="photo">${chillPlace.id}</div>
         <div id="chillPlaceComponent_title_keyWords">
-            <h3>${chillPlace.name}</h3>
-            <form method="post" action="/chillPlace/${chillPlace.id}/select">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                <input type="submit" value="Select">
-            </form>
+            <div class="row-box">
+                <h3>${chillPlace.name}</h3>
+                <form method="post" action="/chillPlace/${chillPlace.id}/select">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" style="display: none">
+                    <input type="submit" value="Подробнее">
+                </form>
+            </div>
             <p>${chillPlace.description}</p>
         </div>
         <div id="chillPlaceComponent_badges">
@@ -42,7 +44,10 @@
                 <p>${badge.name}</p>
             </#list>
         </div>
-        <div id="chillPlaceComponent_contact"><p>${chillPlace.phone}</p><p>${chillPlace.address}</p></div>
+        <div id="chillPlaceComponent_contact">
+            <p>${chillPlace.phone}</p>
+            <p>${chillPlace.address}</p>
+        </div>
     </div>
 </#list>
 </body>
